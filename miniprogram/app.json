@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/demo/base/base",
+    "pages/demo/cloud/cloud",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/demo/base/base",
+        "text": "基础",
+        "iconPath":"images/base-normal.png",
+        "selectedIconPath": "images/base-selected.png"
+      },
+      {
+        "pagePath": "pages/demo/cloud/cloud",
+        "text": "云开发",
+        "iconPath": "images/cloud-normal.png",
+        "selectedIconPath": "images/cloud-selected.png"
+      }
+    ],
+    "color": "#bfbfbf",
+    "selectedColor": "#8bc34a"
+  },
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8bc34a",
+    "navigationBarTitleText": "诊所预约系统",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

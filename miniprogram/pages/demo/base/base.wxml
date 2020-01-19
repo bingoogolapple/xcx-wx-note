@@ -1,0 +1,25 @@
+<!--miniprogram/pages/demo/base/base.wxml-->
+<view>{{msg}}</view>
+<image class="box banner" src="{{img}}"></image>
+
+<view wx:for="{{aar}}" wx:key="*this">
+  {{index}} - {{item}}
+</view>
+<view wx:for="{{list}}" wx:key="name">
+  {{index}} - {{item.name}} - {{item.age}}
+</view>
+<block wx:for="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="name">
+  <view>{{index}}</view>
+  <view>{{item.name}} - {{item.age}}</view>
+</block>
+
+<view wx:if="{{isLogin}}">BGA</view>
+<view wx:else>请登录</view>
+<view hidden="{{!isLogin}}">BGA</view>
+<view hidden="{{isLogin}}">请登录</view>
+
+<view data-id="1111" class="box" bindtap="onClickBox">
+  <!-- catchtap 阻止事件冒泡，点击子元素时不会触发父元素点击事件 -->
+  <button size='mini' catchtap="onClickIncrease">增加</button>
+</view>
+<view>{{count}}</view>

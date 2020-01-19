@@ -1,0 +1,5 @@
+<!--miniprogram/pages/demo/cloud/cloud.wxml-->
+<button catchtap="insert">插入</button>
+<button catchtap="update">更新</button>
+<button catchtap="query">查询</button>
+<button catchtap="delete">删除</button>

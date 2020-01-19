@@ -1,0 +1,7 @@
+/* miniprogram/pages/demo/base/base.wxss */
+@import '../../../style/common.wxss';
+
+.box {
+  width: 200rpx;
+  height: 200rpx;
+}
