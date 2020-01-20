@@ -1,5 +1,9 @@
 <!--miniprogram/pages/demo/cloud/cloud.wxml-->
+<view>云数据库</view>
 <button catchtap="insert">插入</button>
 <button catchtap="update">更新</button>
 <button catchtap="query">查询</button>
 <button catchtap="delete">删除</button>
+<view>云函数</view>
+<button catchtap="sum">调用云函数sum</button>
+<button catchtap="batchDelete">批量删除</button>

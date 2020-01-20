@@ -44,8 +44,8 @@ Page({
   },
   query: function() {
     db.collection('specialty')
-    .where({
-      name: '便民门诊'
+      .where({
+        name: '便民门诊'
       }).get().then(res => {
         console.log("查询成功", res)
       }).catch(err => {
@@ -54,6 +54,7 @@ Page({
   },
   delete: function() {
     // 小程序端只能删除单条数据，删除多条需要调云函数
+    // 没找到对应数据时不会返回删除失败，需要单独判断 removed
     db.collection('specialty')
       .doc('da51bd8c5e247f8903bcd4763cd822d8')
       .remove()
@@ -68,6 +69,30 @@ Page({
       .catch(err => {
         console.log("删除失败", err)
       })
+  },
+  sum: function() {
+    wx.cloud.callFunction({
+      name: 'sum',
+      data: {
+        a: 1,
+        b: 2
+      }
+    }).then(res => {
+      // res.result.sum
+      console.log('成功', res)
+    }).catch(err => {
+      console.log('失败', err)
+    })
+  },
+  batchDelete: function() {
+    wx.cloud.callFunction({
+      name: 'batchDelete'
+    }).then(res => {
+      // res.result.stats.removed
+      console.log('批量删除成功', res)
+    }).catch(err => {
+      console.log('批量删除失败', err)
+    })
   },
 
   /**
