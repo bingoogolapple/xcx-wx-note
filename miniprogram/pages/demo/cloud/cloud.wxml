@@ -7,3 +7,7 @@
 <view>云函数</view>
 <button catchtap="sum">调用云函数sum</button>
 <button catchtap="batchDelete">批量删除</button>
+<view>云存储</view>
+<button catchtap="upload">上传图片</button>
+<image src="{{avatorUrl}}"></image>
+<button catchtap="download">下载图片</button>
