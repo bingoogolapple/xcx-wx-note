@@ -19,7 +19,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"nodeModules": true
 	},
 	"appid": "wx06837deceb077b5a",
 	"projectname": "xcx-wx-note",

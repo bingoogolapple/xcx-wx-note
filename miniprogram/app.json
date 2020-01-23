@@ -1,14 +1,28 @@
 {
   "pages": [
+    "pages/movie/movie/movie",
+    "pages/movie/profile/profile",
     "pages/demo/base/base",
     "pages/demo/cloud/cloud"
   ],
   "tabBar": {
     "list": [
       {
+        "pagePath": "pages/movie/movie/movie",
+        "text": "电影",
+        "iconPath": "images/movie-normal.png",
+        "selectedIconPath": "images/movie-selected.png"
+      },
+      {
+        "pagePath": "pages/movie/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile-normal.png",
+        "selectedIconPath": "images/profile-selected.png"
+      },
+      {
         "pagePath": "pages/demo/base/base",
         "text": "基础",
-        "iconPath":"images/base-normal.png",
+        "iconPath": "images/base-normal.png",
         "selectedIconPath": "images/base-selected.png"
       },
       {
@@ -28,6 +42,5 @@
     "navigationBarTitleText": "诊所预约系统",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }
