@@ -61,6 +61,21 @@
 					"id": -1,
 					"name": "云开发",
 					"pathName": "pages/demo/cloud/cloud",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/movie/detail/detail",
+					"query": "title=测试",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/movie/profile/profile",
+					"query": "",
 					"scene": null
 				}
 			]

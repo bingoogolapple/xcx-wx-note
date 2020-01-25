@@ -2,6 +2,7 @@
   "pages": [
     "pages/movie/movie/movie",
     "pages/movie/profile/profile",
+    "pages/movie/detail/detail",
     "pages/demo/base/base",
     "pages/demo/cloud/cloud"
   ],

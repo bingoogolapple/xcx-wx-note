@@ -1,2 +1,6 @@
 <!--miniprogram/pages/movie/profile/profile.wxml-->
-<text>miniprogram/pages/movie/profile/profile.wxml</text>
+<open-data type="userAvatarUrl"></open-data>
+<open-data type="userNickName"></open-data>
+
+<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">获取用户信息</button>
+<button open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">获取手机号</button>

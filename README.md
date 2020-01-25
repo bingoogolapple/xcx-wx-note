@@ -18,6 +18,7 @@ cnpm i @vant/weapp -S --production
 ## request-promise
 
 * https://github.com/request/request-promise
+* 每个云函数都要安装一次
 
 ```
 cnpm install --save request

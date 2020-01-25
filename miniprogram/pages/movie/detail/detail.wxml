@@ -1,0 +1,15 @@
+<!--miniprogram/pages/movie/detail/detail.wxml-->
+<view>
+  <view class="detail-container" style="background: url({{bg}}) no-repeat top/cover"></view>
+  <view class="detail-mask"></view>
+  <text>{{title}}</text>
+
+  <van-cell-group>
+    <van-field value="{{ username }}" required clearable label="用户名" icon="question-o" placeholder="请输入用户名" bind:change="onChange" bind:click-icon="onClickIcon" />
+
+    <van-field value="{{ password }}" type="password" label="密码" placeholder="请输入密码" required border="{{ false }}" />
+  </van-cell-group>
+  <van-button type="primary" bind:click="chooseImage">选择图片</van-button>
+  <image wx:for="{{images}}" src="{{item}}" wx:key="*this" class="comment-img"></image>
+  <van-button type="primary" bind:click="uploadImage">上传图片</van-button>
+</view>

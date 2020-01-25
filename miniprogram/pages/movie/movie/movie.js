@@ -29,6 +29,13 @@ Page({
       console.log('失败', err)
     })
   },
+  goDetail: function(event) {
+    let title = event.target.dataset.title
+    console.log(event)
+    wx.navigateTo({
+      url: `../detail/detail?title=${title}`,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

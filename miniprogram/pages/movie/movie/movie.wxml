@@ -1,4 +1,4 @@
 <!--miniprogram/pages/movie/movie/movie.wxml-->
-<view class="item" wx:for="{{movieList}}" wx:key="id">
-  <text>{{item.title}}</text>
+<view class="item" catchtap="goDetail" wx:for="{{movieList}}" wx:key="id" data-title="{{item.title}}">
+{{item.title}}
 </view>
