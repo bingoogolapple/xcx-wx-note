@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/todo/index/index",
+    "pages/todo/add/add",
     "pages/movie/movie/movie",
     "pages/movie/profile/profile",
     "pages/movie/detail/detail",
@@ -10,6 +12,12 @@
   ],
   "tabBar": {
     "list": [
+      {
+        "pagePath": "pages/todo/index/index",
+        "text": "TODO",
+        "iconPath": "images/movie-normal.png",
+        "selectedIconPath": "images/movie-selected.png"
+      },
       {
         "pagePath": "pages/movie/movie/movie",
         "text": "电影",
@@ -45,5 +53,10 @@
     "navigationBarTitleText": "诊所预约系统",
     "navigationBarTextStyle": "white"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button",
+    "van-field": "@vant/weapp/field",
+    "van-toast": "@vant/weapp/toast"
+  }
 }

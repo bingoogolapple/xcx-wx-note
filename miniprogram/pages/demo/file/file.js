@@ -72,5 +72,12 @@ Page({
       })
       .then(res => console.log(res))
       .catch(err => console.error(res))
+  },
+  deleteFile: function() {
+    wx.cloud.deleteFile({
+      fileList: ['cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757975128.jpg']
+    })
+    .then(console.log)
+    .catch(console.error)
   }
 })

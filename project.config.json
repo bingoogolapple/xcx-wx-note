@@ -84,6 +84,12 @@
 					"pathName": "pages/demo/database/database",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加代办",
+					"pathName": "pages/todo/add/add",
+					"scene": null
 				}
 			]
 		}

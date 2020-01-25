@@ -5,3 +5,4 @@
 <button catchtap="download">下载图片</button>
 <van-button type="primary" catchtap="download">下载图片</van-button>
 <button catchtap="getTempFileUrl">获取临时文件链接</button>
+<button catchtap="deleteFile">删除文件</button>
