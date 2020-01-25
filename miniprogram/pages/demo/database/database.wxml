@@ -1,0 +1,11 @@
+<!--miniprogram/pages/demo/database/database.wxml-->
+<button catchtap="insert">插入</button>
+<button catchtap="update">更新</button>
+<button catchtap="query">查询</button>
+<button catchtap="delete">删除</button>
+<button catchtap="queryInArray">queryInArray</button>
+<button catchtap="queryNinArray">queryNinArray</button>
+<button catchtap="queryField">queryField</button>
+<button catchtap="queryRegex">queryRegex</button>
+<button catchtap="addLocation">addLocation</button>
+<button catchtap="queryLocation">queryLocation</button>

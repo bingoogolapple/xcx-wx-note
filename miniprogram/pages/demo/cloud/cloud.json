@@ -1,7 +1,5 @@
 {
-  "usingComponents": {
-    "van-button": "@vant/weapp/button"
-  },
+  "usingComponents": {},
   "navigationBarBackgroundColor": "#ab47bc",
   "navigationBarTitleText": "云开发",
   "navigationBarTextStyle": "white"
