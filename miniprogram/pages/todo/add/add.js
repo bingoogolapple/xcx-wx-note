@@ -28,16 +28,36 @@ Page({
       }
     })
   },
+  showNoLocationPermission: function() {
+    wx.showToast({
+      title: '未开启位置权限，无法选择位置',
+      icon: 'none'
+    })
+  },
   chooseLocation: function() {
     // https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.chooseLocation.html
     wx.getSetting({
       success: res => {
         console.log(res)
-        // 有可能是 null，为 null 或 true 时都 performChooseLocation
-        if (res.authSetting['scope.userLocation'] == false) {
+        if (res.authSetting['scope.userLocation'] == true) {
+          // 为 true 表示已授权
+          this.performChooseLocation()
+        } else if (res.authSetting['scope.userLocation'] == false) {
+          // 为 false 表示请求过权限，但未授权，需要打开设置页面授权
           this.requestLocationPermission()
         } else {
-          this.performChooseLocation()
+          // 为 null 表示还未请求过授权
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success: res => {
+              console.log('允许授权', res)
+              this.performChooseLocation()
+            },
+            fail: err => {
+              console.error('不允许授权', err)
+              this.showNoLocationPermission()
+            }
+          })
         }
       }
     })
@@ -46,25 +66,23 @@ Page({
     // 不要包裹到 Toast 或 Dialog 里，不然打开设置页面会报错【openSetting:fail can only be invoked by user TAP gesture.】
     wx.openSetting({
       success: res => {
-        console.log('打开设置成功')
+        console.log('打开设置成功', res)
         if (res.authSetting['scope.userLocation']) {
           this.performChooseLocation()
         } else {
-          wx.showToast({
-            title: '未开启位置权限，无法选择位置',
-            icon: 'none'
-          })
+          this.showNoLocationPermission()
         }
       },
       fail: (err) => {
         console.error('打开设置失败', err)
+        this.showNoLocationPermission()
       }
     })
   },
   performChooseLocation() {
     wx.chooseLocation({
       success: res => {
-        console.log(res)
+        console.log('选择位置成功', res)
         let locationObj = {
           latitude: res.latitude,
           longitude: res.longitude,
@@ -76,8 +94,12 @@ Page({
         })
       },
       fail: err => {
-        console.error('获取位置失败', err)
-        this.requestLocationPermission()
+        console.error('选择位置失败', err)
+        if (err.errMsg.indexOf('cancel') != -1) {
+          console.log('取消选中位置')
+        } else {
+          this.showNoLocationPermission()
+        }
       }
     })
   },
