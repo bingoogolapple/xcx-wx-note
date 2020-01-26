@@ -8,3 +8,4 @@
 <button catchtap="batchDelete">批量删除</button>
 <button catchtap="generateCode">生成码</button>
 <image wx:if="{{fileID}}" src="{{fileID}}" />
+<button open-type="share">分享</button>

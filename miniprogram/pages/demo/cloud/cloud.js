@@ -49,5 +49,12 @@ Page({
     }).catch(err => {
       console.log('生成未限制小程序码失败', err)
     })
+  },
+  onShareAppMessage: function() {
+    return {
+      title: '测试标题',
+      path: 'pages/todo/detail/detail?id=d68532785e2d200205e910614503b839',
+      imageUrl: 'https://636c-clinic-dev-gyarq-1301144683.tcb.qcloud.la/code/1580051206024.jpeg?sign=4372b31ea1728b7ee21e5cd3320212fb&t=1580057434'
+    }
   }
 })
