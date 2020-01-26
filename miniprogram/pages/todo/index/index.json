@@ -1,8 +1,5 @@
 {
-  "usingComponents": {
-    "van-cell": "@vant/weapp/cell",
-    "van-cell-group": "@vant/weapp/cell-group"
-  },
+  "usingComponents": {},
   "navigationBarTitleText": "云代办",
   "enablePullDownRefresh": true
 }

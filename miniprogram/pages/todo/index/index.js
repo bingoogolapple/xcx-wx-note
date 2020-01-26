@@ -8,11 +8,6 @@ Page({
   onLoad: function(options) {
     this.loadTasks(false)
   },
-  goAddTodo: function() {
-    wx.navigateTo({
-      url: '../add/add',
-    })
-  },
   loadTasks: function(loadMore = false, callback = () => {}) {
     if (!callback) {
       callback = () => {}

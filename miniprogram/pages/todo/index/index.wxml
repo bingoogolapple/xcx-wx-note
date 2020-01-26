@@ -1,7 +1,13 @@
 <!--miniprogram/pages/todo/index/index.wxml-->
-<van-button bind:click="goAddTodo">添加代办</van-button>
+<view class="plusBtn">
+  <navigator url="../add/add">
+    <van-icon class="plusIcon" name="plus" />
+  </navigator>
+</view>
 <van-cell-group>
   <block wx:for="{{tasks}}" wx:key="title">
-    <van-cell title="{{item.title}}" />
+    <navigator url="../detail/detail?id={{item._id}}">
+      <van-cell title="{{item.title}}" />
+    </navigator>
   </block>
 </van-cell-group>

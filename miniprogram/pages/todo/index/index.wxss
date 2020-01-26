@@ -1,1 +1,19 @@
 /* miniprogram/pages/todo/index/index.wxss */
+
+.plusBtn {
+  position: fixed;
+  z-index: 100;
+  bottom: 100rpx;
+  right: 100rpx;
+  background-color: #ff0000;
+  border-radius: 50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plusIcon {
+  font-size: 80rpx;
+}
