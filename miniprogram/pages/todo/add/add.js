@@ -90,22 +90,50 @@ Page({
       wx.hideLoading()
     })
   },
+  requestSubscribeMessage: function() {
+    let tmpId = '12ofvxc8EnDub9dWT_XeJa878tPir3rlvGE2Wo2DENk'
+    // https://developers.weixin.qq.com/miniprogram/dev/api/open-api/subscribe-message/wx.requestSubscribeMessage.html
+    wx.requestSubscribeMessage({
+      tmplIds: [tmpId],
+      success: res => {
+        console.log(res)
+        if (res[tmpId] === 'accept') {
+          console.log('允许订阅')
+          wx.cloud.callFunction({
+            name: 'msgMe',
+            data: {
+              tmpId: tmpId,
+              title: '测试标题'
+            }
+          }).then(res => {
+            // res.result.errCode == 0
+            console.log('发送成功', res)
+          }).catch(err => {
+            console.log('发送失败', err)
+          })
+        } else {
+          console.log('取消订阅')
+        }
+      }
+    })
+  },
   onClickSubmit: function(event) {
-    console.log('点击登录')
-    let title = event.detail.value.title.trim()
-    if (title.length === 0) {
-      wx.showToast({
-        title: '标题不能为空',
-        icon: 'none'
-      })
-      return
-    }
+    // event.detail.formId
+    console.log('点击提交', event)
+    // let title = event.detail.value.title.trim()
+    // if (title.length === 0) {
+    //   wx.showToast({
+    //     title: '标题不能为空',
+    //     icon: 'none'
+    //   })
+    //   return
+    // }
 
-    if (this.data.imageUrl) {
-      this.performUpload(title)
-      return
-    }
-    this.performSubmit(title, null)
+    // if (this.data.imageUrl) {
+    //   this.performUpload(title)
+    //   return
+    // }
+    // this.performSubmit(title, null)
   },
   performSubmit: function(title, imageUrl) {
     wx.showLoading({
