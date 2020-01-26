@@ -13,7 +13,6 @@ exports.main = async(event, context) => {
       console.log(res)
       // 要转换一次后再返回，否则客户端也要转换一次
       return JSON.parse(res).data.datas
-      return []
     })
     .catch(function(err) {
       console.log(err)

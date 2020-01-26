@@ -3,7 +3,14 @@ const db = wx.cloud.database()
 Page({
   data: {
     imageUrl: null,
-    locationObj: null
+    locationObj: null,
+    time: null
+  },
+  bindTimeChange: function(e) {
+    console.log(e.detail.value)
+    this.setData({
+      time: e.detail.value
+    })
   },
   selectImage: function() {
     wx.chooseImage({

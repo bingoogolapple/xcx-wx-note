@@ -1,9 +1,14 @@
 <!--pages/todo/add/add.wxml-->
 <form bindsubmit="onClickSubmit" report-submit="{{true}}">
-  <input name="title"></input>
+  <input name="title" auto-focus placeholder="请输入标题"/>
   <image src="{{imageUrl}}" />
   <button bindtap="selectImage">选择图片</button>
   <button bindtap="chooseLocation">选择位置</button>
+  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+    <van-cell-group>
+      <van-cell title="时间" value="{{time}}" border="false" />
+    </van-cell-group>
+  </picker>
   <button bindtap="requestSubscribeMessage">订阅消息</button>
   <button form-type="submit">提交</button>
 </form>
