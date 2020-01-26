@@ -1,4 +1,5 @@
 <van-cell-group>
-  <van-cell title="{{task.title}}" value="{{task.status === 'in-progress' ? '进行中':'已完成'}}" border="{{false}}" />
+  <van-cell title="{{task.title}}" value="{{task.status === 'in-progress' ? '进行中':'已完成'}}" border="{{task.location != null}}" />
+  <van-cell wx:if="{{task.location}}" icon="location-o" title="位置" value="{{task.location.name}}" border="{{false}}" bind:click="viewLocation"/>
 </van-cell-group>
 <image wx:if="{{task.image}}" src="{{task.image}}" />

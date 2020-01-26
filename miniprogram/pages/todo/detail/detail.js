@@ -18,5 +18,14 @@ Page({
     }).catch(err => {
       console.error(err)
     })
+  },
+  viewLocation: function() {
+    // https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.openLocation.html
+    wx.openLocation({
+      latitude: this.data.task.location.latitude,
+      longitude: this.data.task.location.longitude,
+      name: this.data.task.location.name,
+      address: this.data.task.location.address
+    })
   }
 })

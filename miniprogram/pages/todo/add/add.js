@@ -2,7 +2,8 @@ const db = wx.cloud.database()
 
 Page({
   data: {
-    imageUrl: null
+    imageUrl: null,
+    locationObj: null
   },
   selectImage: function() {
     wx.chooseImage({
@@ -14,10 +15,60 @@ Page({
         this.setData({
           imageUrl: imageUrl
         })
-        // this.performUpload(imageUrl)
       },
       fail: err => {
         console.error(err)
+      }
+    })
+  },
+  chooseLocation: function() {
+    // https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.chooseLocation.html
+    wx.getSetting({
+      success: res => {
+        console.log(res)
+        if (res.authSetting['scope.userLocation']) {
+          this.performChooseLocation()
+        } else {
+          this.requestLocationPermission()
+        }
+      }
+    })
+  },
+  requestLocationPermission() {
+    // 不要包裹到 Toast 或 Dialog 里，不然打开设置页面会报错【openSetting:fail can only be invoked by user TAP gesture.】
+    wx.openSetting({
+      success: res => {
+        console.log('打开设置成功')
+        if (res.authSetting['scope.userLocation']) {
+          this.performChooseLocation()
+        } else {
+          wx.showToast({
+            title: '未开启位置权限，无法选择位置',
+            icon: 'none'
+          })
+        }
+      },
+      fail: (err) => {
+        console.error('打开设置失败', err)
+      }
+    })
+  },
+  performChooseLocation() {
+    wx.chooseLocation({
+      success: res => {
+        console.log(res)
+        let locationObj = {
+          latitude: res.latitude,
+          longitude: res.longitude,
+          name: res.name,
+          address: res.address
+        }
+        this.setData({
+          locationObj: locationObj
+        })
+      },
+      fail: err => {
+        this.requestLocationPermission()
       }
     })
   },
@@ -40,6 +91,7 @@ Page({
     })
   },
   onClickSubmit: function(event) {
+    console.log('点击登录')
     let title = event.detail.value.title.trim()
     if (title.length === 0) {
       wx.showToast({
@@ -62,7 +114,8 @@ Page({
     db.collection('todo').add({
       data: {
         title: title,
-        image: imageUrl
+        image: imageUrl,
+        location: this.data.locationObj
       },
       success: res => {
         wx.hideLoading()
