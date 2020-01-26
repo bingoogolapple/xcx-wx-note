@@ -1,12 +1,15 @@
 // miniprogram/pages/demo/cloud/cloud.js
 
 Page({
+  data: {
+    fileID: ''
+  },
   database: function() {
     wx.navigateTo({
       url: '../database/database',
     })
   },
-  file: function () {
+  file: function() {
     wx.navigateTo({
       url: '../file/file',
     })
@@ -33,6 +36,18 @@ Page({
       console.log('批量删除成功', res)
     }).catch(err => {
       console.log('批量删除失败', err)
+    })
+  },
+  generateCode: function() {
+    wx.cloud.callFunction({
+      name: 'generateCode'
+    }).then(res => {
+      console.log('生成未限制小程序码成功', res)
+      this.setData({
+        fileID: res.result.fileID
+      })
+    }).catch(err => {
+      console.log('生成未限制小程序码失败', err)
     })
   }
 })
