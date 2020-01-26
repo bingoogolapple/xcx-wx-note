@@ -1,5 +1,5 @@
 <!--pages/todo/add/add.wxml-->
-<form bindsubmit="onClickSubmit" report-submit="{{true}}">
+<form bindsubmit="onClickSubmit">
   <input name="title" auto-focus placeholder="请输入标题"/>
   <image src="{{imageUrl}}" />
   <button bindtap="selectImage">选择图片</button>

@@ -33,10 +33,11 @@ Page({
     wx.getSetting({
       success: res => {
         console.log(res)
-        if (res.authSetting['scope.userLocation']) {
-          this.performChooseLocation()
-        } else {
+        // 有可能是 null，为 null 或 true 时都 performChooseLocation
+        if (res.authSetting['scope.userLocation'] == false) {
           this.requestLocationPermission()
+        } else {
+          this.performChooseLocation()
         }
       }
     })
@@ -75,6 +76,7 @@ Page({
         })
       },
       fail: err => {
+        console.error('获取位置失败', err)
         this.requestLocationPermission()
       }
     })
@@ -127,20 +129,20 @@ Page({
   onClickSubmit: function(event) {
     // event.detail.formId
     console.log('点击提交', event)
-    // let title = event.detail.value.title.trim()
-    // if (title.length === 0) {
-    //   wx.showToast({
-    //     title: '标题不能为空',
-    //     icon: 'none'
-    //   })
-    //   return
-    // }
+    let title = event.detail.value.title.trim()
+    if (title.length === 0) {
+      wx.showToast({
+        title: '标题不能为空',
+        icon: 'none'
+      })
+      return
+    }
 
-    // if (this.data.imageUrl) {
-    //   this.performUpload(title)
-    //   return
-    // }
-    // this.performSubmit(title, null)
+    if (this.data.imageUrl) {
+      this.performUpload(title)
+      return
+    }
+    this.performSubmit(title, null)
   },
   performSubmit: function(title, imageUrl) {
     wx.showLoading({
