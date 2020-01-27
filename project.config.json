@@ -98,6 +98,13 @@
 					"pathName": "pages/todo/detail/detail",
 					"query": "id=d68532785e2d200205e910614503b839",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "扫码",
+					"pathName": "pages/practice/book/scan/scan",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

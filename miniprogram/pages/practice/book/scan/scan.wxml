@@ -1,2 +1,1 @@
-<!--miniprogram/pages/practice/book/scan/scan.wxml-->
-<text>miniprogram/pages/practice/book/scan/scan.wxml</text>
+<van-button type="primary" bind:click="test">测试</van-button>

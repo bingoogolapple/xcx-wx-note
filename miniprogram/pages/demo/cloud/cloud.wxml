@@ -10,6 +10,8 @@
 <button catchtap="generateCode">生成码</button>
 <image wx:if="{{fileID}}" src="{{fileID}}" />
 <view>其他</view>
+<van-button type="primary" bind:click="scanCode">扫码</van-button>
+<text>{{result}}</text>
 <button open-type="share">分享</button>
 <navigator url="../profile/profile">
   <button>profile</button>
