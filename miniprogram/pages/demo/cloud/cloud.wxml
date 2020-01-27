@@ -10,6 +10,7 @@
 <button catchtap="generateCode">生成码</button>
 <image wx:if="{{fileID}}" src="{{fileID}}" />
 <van-button type="primary" bind:click="msgSecCheck">违法违规文本检查</van-button>
+<van-button type="primary" bind:click="imgSecCheck">违法违规图片检查</van-button>
 <view>其他</view>
 <van-button type="primary" bind:click="scanCode">扫码</van-button>
 <text>{{result}}</text>

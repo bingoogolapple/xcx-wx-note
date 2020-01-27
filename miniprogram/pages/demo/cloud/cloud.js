@@ -58,6 +58,22 @@ Page({
       console.log('云函数调用失败', err)
     })
   },
+  imgSecCheck: function() {
+    wx.cloud.callFunction({
+      name: 'imgSecCheck',
+      data: {
+        fileID: 'cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png'
+      }
+    }).then(res => {
+      if (res.result) {
+        console.log('检测通过', res)
+      } else {
+        console.error('内容不合法', res)
+      }
+    }).catch(err => {
+      console.log('云函数调用失败', err)
+    })
+  },
   scanCode: function() {
     // https://developers.weixin.qq.com/miniprogram/dev/api/device/scan/wx.scanCode.html
     wx.scanCode({
