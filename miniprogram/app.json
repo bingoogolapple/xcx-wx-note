@@ -60,7 +60,8 @@
     "van-cell": "@vant/weapp/cell",
     "van-cell-group": "@vant/weapp/cell-group",
     "van-icon": "@vant/weapp/icon",
-    "van-dialog": "@vant/weapp/dialog"
+    "van-dialog": "@vant/weapp/dialog",
+    "van-divider": "@vant/weapp/divider"
   },
   "permission": {
     "scope.userLocation": {

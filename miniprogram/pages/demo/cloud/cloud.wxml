@@ -10,3 +10,4 @@
 <view>其他</view>
 <van-button type="primary" bind:click="scanCode">扫码</van-button>
 <text>{{result}}</text>
+<van-button type="primary" bind:click="copy">复制到粘贴板</van-button>

@@ -40,6 +40,30 @@ Page({
       console.log('生成未限制小程序码失败', err)
     })
   },
+  gotGet: function() {
+    wx.cloud.callFunction({
+      name: 'httpRequest',
+      data: {
+        method: 'GET'
+      }
+    }).then(res => {
+      console.log('get成功', res)
+    }).catch(err => {
+      console.error('get失败', err)
+    })
+  },
+  gotPost: function() {
+    wx.cloud.callFunction({
+      name: 'httpRequest',
+      data: {
+        method: 'POST'
+      }
+    }).then(res => {
+      console.log('post成功', res)
+    }).catch(err => {
+      console.error('post失败', err)
+    })
+  },
   msgSecCheck: function() {
     wx.cloud.callFunction({
       name: 'msgSecCheck',
@@ -99,7 +123,7 @@ Page({
       console.error('timer错误', err)
     })
   },
-  callSingle: function () {
+  callSingle: function() {
     wx.cloud.callFunction({
       name: "router",
       data: {

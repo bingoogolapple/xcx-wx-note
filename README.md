@@ -2,6 +2,10 @@
 
 微信小程序学习笔记
 
+* 小程序5个可信域名，需要备案
+* 云开发不限制域名个数，不需要备案
+* 解决在一个环境中只有 20 个云函数 https://github.com/TencentCloudBase/tcb-router
+
 ## vant
 
 * https://youzan.github.io/vant-weapp/#/quickstart
@@ -15,7 +19,9 @@ cnpm i @vant/weapp -S --production
 详情 -> 本地设置 -> 使用 npm 模块
 ```
 
-## request-promise
+## 请求其他网络服务
+
+### request-promise
 
 * https://github.com/request/request-promise
 * 每个云函数都要安装一次
@@ -23,6 +29,15 @@ cnpm i @vant/weapp -S --production
 ```
 cnpm install --save request
 npm install --save request-promise
+```
+
+### got
+
+* https://github.com/sindresorhus/got
+* 每个云函数都要安装一次
+
+```
+cnpm install --save got
 ```
 
 ## TCBRouter
