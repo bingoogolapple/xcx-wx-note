@@ -12,7 +12,8 @@
     "pages/demo/cloud/cloud",
     "pages/demo/database/database",
     "pages/demo/file/file",
-    "pages/practice/index/index"
+    "pages/practice/index/index",
+    "pages/demo/function/function"
   ],
   "tabBar": {
     "list": [

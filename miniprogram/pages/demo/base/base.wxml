@@ -1,6 +1,10 @@
 <navigator url="../cloud/cloud">
   <button>云开发</button>
 </navigator>
+<navigator url="../profile/profile">
+  <button>profile</button>
+</navigator>
+<button open-type="share">分享</button>
 <view>{{msg}}</view>
 <image class="box banner" src="{{img}}"></image>
 

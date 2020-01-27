@@ -4,17 +4,9 @@
 <navigator url="../file/file">
   <button>云存储</button>
 </navigator>
-<view>云函数</view>
-<button catchtap="sum">调用云函数sum</button>
-<button catchtap="batchDelete">批量删除</button>
-<button catchtap="generateCode">生成码</button>
-<image wx:if="{{fileID}}" src="{{fileID}}" />
-<van-button type="primary" bind:click="msgSecCheck">违法违规文本检查</van-button>
-<van-button type="primary" bind:click="imgSecCheck">违法违规图片检查</van-button>
+<navigator url="../function/function">
+  <button>云函数</button>
+</navigator>
 <view>其他</view>
 <van-button type="primary" bind:click="scanCode">扫码</van-button>
 <text>{{result}}</text>
-<button open-type="share">分享</button>
-<navigator url="../profile/profile">
-  <button>profile</button>
-</navigator>

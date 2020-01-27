@@ -1,0 +1,11 @@
+<button catchtap="sum">调用云函数sum</button>
+<button catchtap="batchDelete">批量删除</button>
+<view>
+  <button catchtap="generateCode">生成码</button>
+  <image wx:if="{{fileID}}" src="{{fileID}}" />
+</view>
+<van-button type="primary" bind:click="msgSecCheck">违法违规文本检查</van-button>
+<van-button plain type="info" bind:click="imgSecCheck">违法违规图片检查</van-button>
+<van-button type="primary" bind:click="callUser">router-callUser</van-button>
+<van-button plain type="info" bind:click="callTimer">router-callTimer</van-button>
+<van-button type="primary" bind:click="callSingle">router-callSingle</van-button>

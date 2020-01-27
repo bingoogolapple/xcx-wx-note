@@ -38,7 +38,7 @@ Page({
       count: this.data.count + 1
     })
   },
-  onClickBox:function(e) {
+  onClickBox: function(e) {
     console.log("onClickBox", e)
     console.log(e.target.dataset.id)
   },
@@ -96,6 +96,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '测试标题',
+      path: 'pages/todo/detail/detail?id=d68532785e2d200205e910614503b839',
+      imageUrl: 'https://636c-clinic-dev-gyarq-1301144683.tcb.qcloud.la/code/1580051206024.jpeg?sign=4372b31ea1728b7ee21e5cd3320212fb&t=1580057434'
+    }
   }
 })

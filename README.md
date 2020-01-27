@@ -24,3 +24,7 @@ cnpm i @vant/weapp -S --production
 cnpm install --save request
 npm install --save request-promise
 ```
+
+## TCBRouter
+
+* 解决在一个环境中只有 20 个云函数 https://github.com/TencentCloudBase/tcb-router
