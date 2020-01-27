@@ -4,16 +4,6 @@ Page({
   data: {
     fileID: ''
   },
-  database: function() {
-    wx.navigateTo({
-      url: '../database/database',
-    })
-  },
-  file: function() {
-    wx.navigateTo({
-      url: '../file/file',
-    })
-  },
   sum: function() {
     wx.cloud.callFunction({
       name: 'sum',

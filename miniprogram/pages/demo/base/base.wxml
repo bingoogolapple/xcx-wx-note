@@ -1,4 +1,6 @@
-<!--miniprogram/pages/demo/base/base.wxml-->
+<navigator url="../cloud/cloud">
+  <button>云开发</button>
+</navigator>
 <view>{{msg}}</view>
 <image class="box banner" src="{{img}}"></image>
 

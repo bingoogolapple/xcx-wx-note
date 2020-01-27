@@ -1,35 +1,32 @@
 {
   "pages": [
-    "pages/todo/index/index",
-    "pages/todo/add/add",
-    "pages/todo/detail/detail",
-    "pages/movie/movie/movie",
-    "pages/movie/profile/profile",
-    "pages/movie/detail/detail",
+    "pages/practice/book/index/index",
+    "pages/practice/book/scan/scan",
+    "pages/practice/todo/index/index",
+    "pages/practice/todo/add/add",
+    "pages/practice/todo/detail/detail",
+    "pages/practice/movie/movie/movie",
+    "pages/practice/movie/detail/detail",
     "pages/demo/base/base",
+    "pages/demo/profile/profile",
     "pages/demo/cloud/cloud",
     "pages/demo/database/database",
-    "pages/demo/file/file"
+    "pages/demo/file/file",
+    "pages/practice/index/index"
   ],
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/todo/index/index",
-        "text": "TODO",
+        "pagePath": "pages/practice/book/index/index",
+        "text": "书柜",
         "iconPath": "images/movie-normal.png",
         "selectedIconPath": "images/movie-selected.png"
       },
       {
-        "pagePath": "pages/movie/movie/movie",
-        "text": "电影",
+        "pagePath": "pages/practice/book/scan/scan",
+        "text": "扫码",
         "iconPath": "images/movie-normal.png",
         "selectedIconPath": "images/movie-selected.png"
-      },
-      {
-        "pagePath": "pages/movie/profile/profile",
-        "text": "我的",
-        "iconPath": "images/profile-normal.png",
-        "selectedIconPath": "images/profile-selected.png"
       },
       {
         "pagePath": "pages/demo/base/base",
@@ -38,8 +35,8 @@
         "selectedIconPath": "images/base-selected.png"
       },
       {
-        "pagePath": "pages/demo/cloud/cloud",
-        "text": "云开发",
+        "pagePath": "pages/practice/index/index",
+        "text": "练习",
         "iconPath": "images/cloud-normal.png",
         "selectedIconPath": "images/cloud-selected.png"
       }

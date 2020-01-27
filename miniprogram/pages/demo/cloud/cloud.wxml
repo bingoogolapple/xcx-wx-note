@@ -1,11 +1,16 @@
-<!--miniprogram/pages/demo/cloud/cloud.wxml-->
-<view>云数据库</view>
-<button catchtap="database">数据库</button>
-<view>云存储</view>
-<button catchtap="file">存储</button>
+<navigator url="../database/database">
+  <button>云数据库</button>
+</navigator>
+<navigator url="../file/file">
+  <button>云存储</button>
+</navigator>
 <view>云函数</view>
 <button catchtap="sum">调用云函数sum</button>
 <button catchtap="batchDelete">批量删除</button>
 <button catchtap="generateCode">生成码</button>
 <image wx:if="{{fileID}}" src="{{fileID}}" />
+<view>其他</view>
 <button open-type="share">分享</button>
+<navigator url="../profile/profile">
+  <button>profile</button>
+</navigator>
