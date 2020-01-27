@@ -41,7 +41,24 @@ Page({
       console.log('生成未限制小程序码失败', err)
     })
   },
-  scanCode: function () {
+  msgSecCheck: function() {
+    wx.cloud.callFunction({
+      name: 'msgSecCheck',
+      data: {
+        // content: '特3456书yuuo莞6543李zxcz蒜7782法fgnv级'
+        content: '测试'
+      }
+    }).then(res => {
+      if (res.result) {
+        console.log('检测通过', res)
+      } else {
+        console.error('内容不合法', res)
+      }
+    }).catch(err => {
+      console.log('云函数调用失败', err)
+    })
+  },
+  scanCode: function() {
     // https://developers.weixin.qq.com/miniprogram/dev/api/device/scan/wx.scanCode.html
     wx.scanCode({
       // onlyFromCamera: false,

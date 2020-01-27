@@ -9,6 +9,7 @@
 <button catchtap="batchDelete">批量删除</button>
 <button catchtap="generateCode">生成码</button>
 <image wx:if="{{fileID}}" src="{{fileID}}" />
+<van-button type="primary" bind:click="msgSecCheck">违法违规文本检查</van-button>
 <view>其他</view>
 <van-button type="primary" bind:click="scanCode">扫码</van-button>
 <text>{{result}}</text>
