@@ -2,5 +2,7 @@
 <open-data type="userAvatarUrl"></open-data>
 <open-data type="userNickName"></open-data>
 
-<button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">获取用户信息</button>
+<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">微信登录</button>
+<button open-type="openSetting">打开授权设置页</button>
+<button open-type="feedback">打开意见反馈页面</button>
 <button open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">获取手机号</button>
