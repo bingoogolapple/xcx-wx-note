@@ -35,11 +35,18 @@ npm install --save request-promise
 
 * https://github.com/sindresorhus/got
 * 每个云函数都要安装一次
+* 最新版 10.x.x 在小程序中使用有问题，用 9.x.x 的最新版
 
 ```
-cnpm install --save got
+cnpm install --save got@9.6.0
 ```
 
 ## TCBRouter
 
 * 解决在一个环境中只有 20 个云函数 https://github.com/TencentCloudBase/tcb-router
+
+## 操作 MySQL
+
+### sequelize
+
+* https://github.com/sequelize/sequelize

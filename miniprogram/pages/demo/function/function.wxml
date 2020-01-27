@@ -1,8 +1,9 @@
-<button catchtap="sum">调用云函数sum</button>
-<button catchtap="batchDelete">批量删除</button>
+<van-button type="primary" bind:click="sum">sum</van-button>
+<van-button type="info" bind:click="batchDelete">批量删除</van-button>
+<van-divider dashed contentPosition="center">生成码</van-divider>
 <view>
-  <button catchtap="generateCode">生成码</button>
-  <image wx:if="{{fileID}}" src="{{fileID}}" />
+  <van-button type="info" bind:click="generateCode">生成码</van-button>
+  <image style="width: 200rpx;height: 200rpx;" wx:if="{{fileID}}" src="{{fileID}}" />
 </view>
 <van-divider dashed contentPosition="center">got</van-divider>
 <van-button type="primary" bind:click="gotGet">gotGet</van-button>
@@ -13,6 +14,10 @@
 <van-button plain type="info" bind:click="imgSecCheck">违法违规图片检查</van-button>
 
 <van-divider dashed contentPosition="center">TCBRouter</van-divider>
-<van-button type="primary" bind:click="callUser">router-callUser</van-button>
-<van-button plain type="info" bind:click="callTimer">router-callTimer</van-button>
-<van-button type="primary" bind:click="callSingle">router-callSingle</van-button>
+<van-button type="primary" bind:click="callUser">callUser</van-button>
+<van-button plain type="info" bind:click="callTimer">callTimer</van-button>
+<van-button type="primary" bind:click="callSingle">callSingle</van-button>
+<van-button type="primary" bind:click="cloudFunctionCallCloudFunction">cloudFunctionCallCloudFunction</van-button>
+<van-button type="primary" bind:click="cloudFunctionCallFunction">cloudFunctionCallFunction</van-button>
+<van-button type="primary" bind:click="callIndependent">router-callIndependent</van-button>
+<van-button type="primary" bind:click="callIndependentFile">router-callIndependentFile</van-button>

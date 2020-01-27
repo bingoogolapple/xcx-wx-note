@@ -32,13 +32,13 @@ exports.main = async(event, context) => {
 
 // 本地测试云函数
 
-let result = exports.main({
-  method: 'GET',
-  userInfo: {
-    appId: 'wx06837deceb077b5a',
-    openId: 'oSUQd0bZ3qQONC7Yytp2LtnSFmog'
-  }
-}, {
-  contextKey1: 'contextValue1'
-})
-console.log(result)
+// let result = exports.main({
+//   method: 'GET',
+//   userInfo: {
+//     appId: 'wx06837deceb077b5a',
+//     openId: 'oSUQd0bZ3qQONC7Yytp2LtnSFmog'
+//   }
+// }, {
+//   contextKey1: 'contextValue1'
+// })
+// console.log(result)

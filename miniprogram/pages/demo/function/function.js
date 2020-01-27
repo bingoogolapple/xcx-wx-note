@@ -30,7 +30,7 @@ Page({
   },
   generateCode: function() {
     wx.cloud.callFunction({
-      name: 'generateCode'
+      name: 'generateUnlimitedCode'
     }).then(res => {
       console.log('生成未限制小程序码成功', res)
       this.setData({
@@ -134,6 +134,62 @@ Page({
       console.log('single结果', res)
     }).catch(err => {
       console.error('single错误', err)
+    })
+  },
+  cloudFunctionCallCloudFunction: function() {
+    wx.cloud.callFunction({
+      name: "router",
+      data: {
+        $url: "cloudFunctionCallCloudFunction",
+        a: 1,
+        b: 2
+      }
+    }).then(res => {
+      console.log('cloudFunctionCallCloudFunction结果', res)
+    }).catch(err => {
+      console.error('cloudFunctionCallCloudFunction错误', err)
+    })
+  },
+  cloudFunctionCallFunction: function () {
+    wx.cloud.callFunction({
+      name: "router",
+      data: {
+        $url: "cloudFunctionCallFunction",
+        a: 1,
+        b: 2
+      }
+    }).then(res => {
+      console.log('cloudFunctionCallFunction结果', res)
+    }).catch(err => {
+      console.error('cloudFunctionCallFunction错误', err)
+    })
+  },
+  callIndependent: function () {
+    wx.cloud.callFunction({
+      name: "router",
+      data: {
+        $url: "independent",
+        a: 1,
+        b: 2
+      }
+    }).then(res => {
+      console.log('callIndependent结果', res)
+    }).catch(err => {
+      console.error('callIndependent错误', err)
+    })
+  },
+  callIndependentFile: function () {
+    wx.cloud.callFunction({
+      name: "router",
+      data: {
+        $url: "independentFile",
+        a: 1,
+        b: 2
+      }
+    }).then(res => {
+      console.log('callIndependentFile结果', res)
+    }).catch(err => {
+      console.error('callIndependentFile错误', err)
     })
   }
 })

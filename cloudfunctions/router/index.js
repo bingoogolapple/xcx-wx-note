@@ -1,9 +1,31 @@
 // 为了解决在一个环境中只有 20 个云函数 https://github.com/TencentCloudBase/tcb-router
 const cloud = require('wx-server-sdk')
+const TcbRouter = require('tcb-router')
+const math = require('./math')
 
 cloud.init()
 
-const TcbRouter = require('tcb-router')
+function plus(a, b) {
+  return math.add(a, b)
+  // return a + b
+}
+
+async function independent(ctx) {
+  console.log('ctx', ctx)
+  ctx.data.plusResult = await new Promise(resolve => {
+    setTimeout(() => {
+      const event = ctx.event
+      resolve(plus(event.a, event.b))
+    }, 1500)
+  })
+
+  // ctx.data.plusResult = plus(event.a, event.b)
+
+  ctx.body = {
+    code: 0,
+    data: ctx.data
+  }
+}
 
 // 云函数入口函数
 exports.main = async(event, context) => {
@@ -16,6 +38,8 @@ exports.main = async(event, context) => {
   // app.use 表示该中间件会适用于所有的路由
   app.use(async(ctx, next) => {
     console.log('a、开始所有路由公共中间件')
+    ctx.event = event
+    ctx.context = context
     ctx.data = {}
     ctx.data.openId = event.userInfo.openId
     await next() // 执行下一中间件
@@ -45,7 +69,7 @@ exports.main = async(event, context) => {
     await next() // 执行下一中间件
     console.log('E、结束 user 的第2个中间件')
   }, async(ctx) => {
-    console.log('C、执行 user 的第3个中间件')
+    console.log('C、执行 user 的第3个中间件', ctx._req)
     ctx.data.city = '直接返回的城市'
 
     // ctx.body 返回数据到小程序端
@@ -97,6 +121,48 @@ exports.main = async(event, context) => {
       data: ctx.data
     }
   })
+
+  app.router('cloudFunctionCallCloudFunction', async(ctx) => {
+    const res = await cloud.callFunction({
+      name: 'sum',
+      data: {
+        a: event.a,
+        b: event.b,
+        userInfo: event.userInfo
+      }
+    })
+    /*
+    {
+      result: {
+        sum: 3,
+        openid: 'oSUQd0bZ3qQONC7Yytp2LtnSFmog',
+        appid: 'wx06837deceb077b5a'
+      },
+      errMsg: 'callFunction:ok',
+      requestID: '01db0b5e-4122-11ea-abe6-5254002fa145'
+    }
+    */
+    console.log('res', res)
+    ctx.data.sumResult = res.result
+
+    ctx.body = {
+      code: 0,
+      data: ctx.data
+    }
+  })
+
+  app.router('cloudFunctionCallFunction', async(ctx) => {
+    ctx.data.plusResult = plus(event.a, event.b)
+
+    ctx.body = {
+      code: 0,
+      data: ctx.data
+    }
+  })
+
+  app.router('independent', independent)
+
+  app.router('independentFile', math.independent)
 
   let result = app.serve()
   // 这里的 result 是个 Promise
