@@ -28,7 +28,7 @@ cnpm i @vant/weapp -S --production
 
 ```
 cnpm install --save request
-npm install --save request-promise
+cnpm install --save request-promise
 ```
 
 ### got
@@ -44,6 +44,12 @@ cnpm install --save got@9.6.0
 ## TCBRouter
 
 * 解决在一个环境中只有 20 个云函数 https://github.com/TencentCloudBase/tcb-router
+
+```
+cnpm install --save tcb-router
+
+yarn add tcb-router
+```
 
 ## 操作 MySQL
 

@@ -1,11 +1,22 @@
-<!--miniprogram/pages/demo/database/database.wxml-->
-<button catchtap="insert">插入</button>
-<button catchtap="update">更新</button>
-<button catchtap="query">查询</button>
-<button catchtap="delete">删除</button>
-<button catchtap="queryInArray">queryInArray</button>
-<button catchtap="queryNinArray">queryNinArray</button>
-<button catchtap="queryField">queryField</button>
-<button catchtap="queryRegex">queryRegex</button>
-<button catchtap="addLocation">addLocation</button>
-<button catchtap="queryLocation">queryLocation</button>
+<van-divider dashed contentPosition="center">CRUD</van-divider>
+<van-button type="primary" bind:click="insert">插入</van-button>
+<van-button plain type="primary" bind:click="update">更新</van-button>
+<van-button type="primary" bind:click="query">查询</van-button>
+<van-button plain type="primary" bind:click="delete">删除</van-button>
+<van-divider dashed contentPosition="center">QUERY</van-divider>
+<van-button type="primary" bind:click="queryInArray">queryInArray</van-button>
+<van-button plain type="primary" bind:click="queryNinArray">queryNinArray</van-button>
+<van-button type="primary" bind:click="queryField">queryField</van-button>
+<van-button plain type="primary" bind:click="queryRegex">queryRegex</van-button>
+<van-button type="primary" bind:click="addLocation">addLocation</van-button>
+<van-button plain type="primary" bind:click="queryLocation">queryLocation</van-button>
+<van-divider dashed contentPosition="center">GOODS</van-divider>
+<navigator url="./add/add" style="display: inline">
+  <van-button type="primary">add</van-button>
+</navigator>
+<navigator url="./index/index" style="display: inline">
+  <van-button plain type="primary">index</van-button>
+</navigator>
+<navigator url="./complex/complex" style="display: inline">
+  <van-button type="primary">complex</van-button>
+</navigator>

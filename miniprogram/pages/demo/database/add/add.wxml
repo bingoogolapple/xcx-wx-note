@@ -1,0 +1,3 @@
+<van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png" />
+<van-button block type="primary" bind:click="localAddProduct">小程序端添加产品</van-button>
+<van-button plain block type="primary" bind:click="cloudAddProduct">小程序云端添加产品</van-button>

@@ -11,6 +11,10 @@
     "pages/demo/profile/profile",
     "pages/demo/cloud/cloud",
     "pages/demo/database/database",
+    "pages/demo/database/add/add",
+    "pages/demo/database/index/index",
+    "pages/demo/database/complex/complex",
+    "pages/demo/database/info/info",
     "pages/demo/file/file",
     "pages/practice/index/index",
     "pages/demo/function/function"
@@ -61,6 +65,7 @@
     "van-cell-group": "@vant/weapp/cell-group",
     "van-icon": "@vant/weapp/icon",
     "van-dialog": "@vant/weapp/dialog",
+    "van-card": "@vant/weapp/card",
     "van-divider": "@vant/weapp/divider"
   },
   "permission": {

@@ -71,6 +71,20 @@
 					"pathName": "pages/demo/function/function",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情页",
+					"pathName": "pages/demo/database/info/info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加商品",
+					"pathName": "pages/demo/database/add/add",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
