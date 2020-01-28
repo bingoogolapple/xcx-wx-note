@@ -12,7 +12,7 @@
     "pages/demo/cloud/cloud",
     "pages/demo/database/database",
     "pages/demo/database/add/add",
-    "pages/demo/database/index/index",
+    "pages/demo/database/list/list",
     "pages/demo/database/complex/complex",
     "pages/demo/database/info/info",
     "pages/demo/file/file",

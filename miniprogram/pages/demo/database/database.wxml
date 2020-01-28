@@ -14,8 +14,8 @@
 <navigator url="./add/add" style="display: inline">
   <van-button type="primary">add</van-button>
 </navigator>
-<navigator url="./index/index" style="display: inline">
-  <van-button plain type="primary">index</van-button>
+<navigator url="./list/list" style="display: inline">
+  <van-button plain type="primary">产品列表</van-button>
 </navigator>
 <navigator url="./complex/complex" style="display: inline">
   <van-button type="primary">complex</van-button>

@@ -1,2 +1,4 @@
-<van-button plain type="primary" bind:click="test">测试</van-button>
+<navigator url="../add/add" style="display: inline">
+  <van-button type="primary">添加产品</van-button>
+</navigator>
 <van-card wx:for="{{products}}" wx:key="_id" price="{{item.price}}" desc="{{item.red}}" title="{{item.title}}" thumb="{{item.image}}" />

@@ -87,9 +87,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "商品列表",
-					"pathName": "pages/demo/database/index/index",
+					"pathName": "pages/demo/database/list/list",
 					"query": "",
 					"scene": null
 				}

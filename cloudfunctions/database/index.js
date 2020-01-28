@@ -41,7 +41,8 @@ async function addProduct(ctx) {
 
 async function loadProducts(ctx) {
   try {
-    const result = await products.get()
+    const event = ctx.event
+    const result = await products.skip(event.skip).limit(event.limit).get()
     ctx.body = {
       code: 0,
       data: result.data
