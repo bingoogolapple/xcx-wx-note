@@ -1,5 +1,6 @@
 // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/Cloud.database.html
 const db = wx.cloud.database()
+const _ = db.command
 // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/Database.collection.html
 const products = db.collection('products')
 
@@ -8,7 +9,35 @@ Page({
     products: null
   },
   onLoad: function(options) {
-    this.cloudLoadProducts()
+    this.localLoadProducts()
+  },
+  onClickItem: function(event) {
+    let id = event.target.dataset.id
+    let item = this.data.products.filter(item => item._id === id)[0]
+    console.log('也可以直接从节点里获取', event.target.dataset.item)
+    console.log('点击了条目', item)
+
+    // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/command/Command.inc.html
+    products.doc(id).update({
+      data: {
+        view: _.inc(1)
+      }
+    }).then(res => {
+      if (res.stats.updated == 1) {
+        products.doc(id).field({
+          view: true
+        }).get().then(res => {
+          item.view = res.data.view
+          this.setData({
+            products: this.data.products
+          })
+        })
+      } else {
+        console.log('增加访问量失败，不存在')
+      }
+    }).catch(err => {
+      console.error('增加访问量失败', err)
+    })
   },
   localLoadProducts: function(loadMore = false, callback = () => {}) {
     wx.showLoading({
@@ -44,7 +73,7 @@ Page({
       callback()
     })
   },
-  cloudLoadProducts: function (loadMore = false, callback = () => { }) {
+  cloudLoadProducts: function(loadMore = false, callback = () => {}) {
     wx.showLoading({
       title: '数据加载中',
       mask: true
@@ -93,12 +122,12 @@ Page({
   },
   // 需要在当前页面的 json 配置文件中设置 "enablePullDownRefresh": true，https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#%E9%A1%B5%E9%9D%A2%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0
   onPullDownRefresh: function() {
-    this.cloudLoadProducts(false, () => {
+    this.localLoadProducts(false, () => {
       wx.stopPullDownRefresh()
     })
   },
   // onReachBottomDistance 设置页面上拉触底事件触发时距页面底部距离 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html
   onReachBottom: function() {
-    this.cloudLoadProducts(true)
+    this.localLoadProducts(true)
   }
 })

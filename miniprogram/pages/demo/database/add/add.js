@@ -19,7 +19,8 @@ Page({
           'tag2'
         ],
         price: 120.12,
-        color: 'green'
+        color: 'green',
+        view: 0
       }
     }).then(res => {
       console.log(`小程序端添加产品成功${titleIndex}`, res)
@@ -46,7 +47,8 @@ Page({
               'tag2'
             ],
             price: 120.12,
-            color: 'blue'
+            color: 'blue',
+            view: 0
           }
         }
       }).then(res => {
