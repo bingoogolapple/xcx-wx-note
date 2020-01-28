@@ -26,11 +26,25 @@ async function addProduct(ctx) {
     }
     */
 
-    ctx.data._id = result._id
-
     ctx.body = {
       code: 0,
-      data: ctx.data
+      data: result._id
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+async function loadProducts(ctx) {
+  try {
+    const result = await products.get()
+    ctx.body = {
+      code: 0,
+      data: result.data
     }
   } catch (err) {
     console.error(err)
@@ -52,11 +66,11 @@ exports.main = async(event, context) => {
   app.use(async(ctx, next) => {
     ctx.event = event
     ctx.context = context
-    ctx.data = {}
     await next()
   })
 
   app.router('addProduct', addProduct)
+  app.router('loadProducts', loadProducts)
 
   return app.serve()
 }

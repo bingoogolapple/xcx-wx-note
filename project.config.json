@@ -85,6 +85,13 @@
 					"pathName": "pages/demo/database/add/add",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品列表",
+					"pathName": "pages/demo/database/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}
