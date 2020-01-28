@@ -56,6 +56,56 @@ async function loadProducts(ctx) {
   }
 }
 
+async function batchUpdate(ctx) {
+  try {
+    const event = ctx.event
+    const result = await products.where({
+      price: event.oldPrice
+    }).update({
+      data: {
+        price: event.newPrice
+      }
+    })
+
+    // { stats: { updated: 3 }, errMsg: 'collection.update:ok' }
+    console.log('批量更新成功', result)
+
+    ctx.body = {
+      code: 0,
+      data: result.stats.updated
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+async function batchDelete(ctx) {
+  try {
+    const event = ctx.event
+    const result = await products.where({
+      price: event.price
+    }).remove()
+
+    // { stats: { removed: 3 }, errMsg: 'collection.remove:ok' }
+    console.log('批量删除成功', result)
+
+    ctx.body = {
+      code: 0,
+      data: result.stats.removed
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
 //---------------------------------------------------------------
 exports.main = async(event, context) => {
   console.log('event', event)
@@ -72,6 +122,8 @@ exports.main = async(event, context) => {
 
   app.router('addProduct', addProduct)
   app.router('loadProducts', loadProducts)
+  app.router('batchUpdate', batchUpdate)
+  app.router('batchDelete', batchDelete)
 
   return app.serve()
 }

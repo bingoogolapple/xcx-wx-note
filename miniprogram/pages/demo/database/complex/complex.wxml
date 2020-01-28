@@ -1,2 +1,9 @@
-<van-button plain type="primary" bind:click="test">测试</van-button>
-<van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png" />
+<van-button plain type="primary" bind:click="orderByQuery">orderByQuery</van-button>
+<van-button type="primary" bind:click="gtQuery">gtQuery</van-button>
+<van-button plain type="primary" bind:click="inQuery">inQuery</van-button>
+<van-button type="primary" bind:click="orQuery">orQuery</van-button>
+<van-button plain type="primary" bind:click="countQuery">countQuery</van-button>
+<van-button type="primary" bind:click="watchQuery">watchQuery</van-button>
+<van-button plain type="primary" bind:click="batchUpdate">batchUpdate</van-button>
+<van-button type="primary" bind:click="batchDelete">batchDelete</van-button>
+<van-card wx:for="{{products}}" wx:key="_id" price="{{item.price}}" desc="{{item.color}}" title="{{item.title}}" num="{{item.view}}" thumb="{{item.image}}" data-item="{{item}}" data-id="{{item._id}}" catchtap="onClickItem" />

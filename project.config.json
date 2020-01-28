@@ -73,10 +73,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "商品详情页",
 					"pathName": "pages/demo/database/info/info",
-					"query": "",
+					"query": "id=74b140b45e30289306f760a335c839cd",
 					"scene": null
 				},
 				{
@@ -90,6 +90,13 @@
 					"id": 5,
 					"name": "商品列表",
 					"pathName": "pages/demo/database/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "复杂操作",
+					"pathName": "pages/demo/database/complex/complex",
 					"query": "",
 					"scene": null
 				}

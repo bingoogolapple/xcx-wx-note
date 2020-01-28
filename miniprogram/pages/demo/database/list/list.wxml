@@ -1,4 +1,7 @@
 <navigator url="../add/add" style="display: inline">
   <van-button type="primary">添加产品</van-button>
 </navigator>
-<van-card wx:for="{{products}}" wx:key="_id" price="{{item.price}}" desc="{{item.red}}" title="{{item.title}}" num="{{item.view}}" thumb="{{item.image}}" data-item="{{item}}" data-id="{{item._id}}" catchtap="onClickItem"/>
+<navigator url="../complex/complex" style="display: inline">
+  <van-button type="primary">复杂操作</van-button>
+</navigator>
+<van-card wx:for="{{products}}" wx:key="_id" price="{{item.price}}" desc="{{item.color}}" title="{{item.title}}" num="{{item.view}}" thumb="{{item.image}}" data-item="{{item}}" data-id="{{item._id}}" catchtap="onClickItem"/>

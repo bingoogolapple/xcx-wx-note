@@ -1,9 +1,11 @@
-<van-button plain type="primary" bind:click="test">测试</van-button>
-<van-card num="2" price="2.00" desc="描述信息" title="商品标题" thumb="cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png" />
-
-<van-cell-group>
-  <van-cell title="单元格" value="内容" />
-  <van-cell title="单元格" value="内容" label="描述信息" border="{{ false }}" />
+<van-cell-group wx:if="{{product}}">
+  <van-cell title="标题" value="{{product.title}}" />
+  <van-cell title="价格" value="{{product.price}}" />
+  <van-cell title="标签" value="{{product.tags}}" />
+  <van-cell title="颜色" value="{{product.color}}" border="{{false}}" />
 </van-cell-group>
 
-<van-button plain type="primary" bind:click="test">测试</van-button>
+<van-button plain type="primary" bind:click="addTag">添加尾部标签</van-button>
+<van-button type="primary" bind:click="popTag">删除尾部标签</van-button>
+<van-button plain type="primary" bind:click="updateProduct">更新产品</van-button>
+<van-button type="primary" bind:click="deleteProduct">删除产品</van-button>
