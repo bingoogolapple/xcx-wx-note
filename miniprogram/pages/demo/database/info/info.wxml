@@ -7,5 +7,6 @@
 
 <van-button plain type="primary" bind:click="addTag">添加尾部标签</van-button>
 <van-button type="primary" bind:click="popTag">删除尾部标签</van-button>
-<van-button plain type="primary" bind:click="updateProduct">更新产品</van-button>
-<van-button type="primary" bind:click="deleteProduct">删除产品</van-button>
+<van-button plain type="primary" bind:click="pullTag">删除指定标签</van-button>
+<van-button type="primary" bind:click="updateProduct">更新产品</van-button>
+<van-button plain type="primary" bind:click="deleteProduct">删除产品</van-button>

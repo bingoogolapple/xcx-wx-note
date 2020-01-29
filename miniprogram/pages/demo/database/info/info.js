@@ -29,7 +29,7 @@ Page({
   addTag: function() {
     products.doc(this.data.product._id).update({
       data: {
-        tags: _.push(['tag5'])
+        tags: _.push(['tag4'])
       }
     }).then(res => {
       if (res.stats.updated === 1) {
@@ -46,6 +46,22 @@ Page({
     products.doc(this.data.product._id).update({
       data: {
         tags: _.pop()
+      }
+    }).then(res => {
+      if (res.stats.updated === 1) {
+        console.log('更新成功', res)
+        this.refreshProduct(this.data.product._id)
+      } else {
+        console.log('产品不存在', res)
+      }
+    }).catch(err => {
+      console.error('更新失败', err)
+    })
+  },
+  pullTag: function () {
+    products.doc(this.data.product._id).update({
+      data: {
+        tags: _.pull('tag3')
       }
     }).then(res => {
       if (res.stats.updated === 1) {
