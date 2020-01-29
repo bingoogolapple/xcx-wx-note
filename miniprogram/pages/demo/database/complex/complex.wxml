@@ -1,3 +1,4 @@
+<van-button type="primary" bind:click="regExpQuery">regExpQuery</van-button>
 <van-button plain type="primary" bind:click="orderByQuery">orderByQuery</van-button>
 <van-button type="primary" bind:click="gtQuery">gtQuery</van-button>
 <van-button plain type="primary" bind:click="inQuery">inQuery</van-button>
@@ -6,4 +7,9 @@
 <van-button type="primary" bind:click="watchQuery">watchQuery</van-button>
 <van-button plain type="primary" bind:click="batchUpdate">batchUpdate</van-button>
 <van-button type="primary" bind:click="batchDelete">batchDelete</van-button>
-<van-card wx:for="{{products}}" wx:key="_id" price="{{item.price}}" desc="{{item.color}}" title="{{item.title}}" num="{{item.view}}" thumb="{{item.image}}" data-item="{{item}}" data-id="{{item._id}}" catchtap="onClickItem" />
+<van-card wx:for="{{products}}" wx:key="_id" price="{{item.price}}" desc="{{item.color}}" title="{{item.title}}" num="{{item.view}}" thumb="{{item.image}}" data-item="{{item}}" data-id="{{item._id}}" catchtap="onClickItem">
+  <view slot="footer">
+    <view>{{item.address}}</view>
+    <view>{{item.source}}</view>
+  </view>
+</van-card>

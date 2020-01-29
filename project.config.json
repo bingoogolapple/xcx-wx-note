@@ -24,7 +24,7 @@
 	},
 	"appid": "wx06837deceb077b5a",
 	"projectname": "xcx-wx-note",
-	"libVersion": "2.8.1",
+	"libVersion": "2.8.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
