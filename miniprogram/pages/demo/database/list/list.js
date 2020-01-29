@@ -9,7 +9,7 @@ Page({
     products: null
   },
   onLoad: function(options) {
-    this.localLoadProducts()
+    this.cloudLoadProducts()
   },
   onClickItem: function(event) {
     let id = event.target.dataset.id

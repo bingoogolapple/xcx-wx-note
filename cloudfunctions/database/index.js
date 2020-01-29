@@ -108,8 +108,9 @@ async function batchDelete(ctx) {
 
 //---------------------------------------------------------------
 exports.main = async(event, context) => {
-  console.log('event', event)
-
+  const log = cloud.logger()
+  log.info(event)
+  
   const app = new TcbRouter({
     event
   })
