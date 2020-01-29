@@ -1,0 +1,8 @@
+.head-image {
+  width: 750rpx;
+  height: 750rpx;
+}
+
+.btn {
+  margin: 10rpx;
+}

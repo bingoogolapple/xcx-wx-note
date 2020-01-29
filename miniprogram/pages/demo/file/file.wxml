@@ -6,3 +6,10 @@
 <van-button plain type="primary" bind:click="getTempFileUrl">获取临时文件链接</van-button>
 <van-button type="primary" bind:click="deleteFile">删除文件</van-button>
 <van-button plain type="primary" open-type="share">分享</van-button>
+<van-divider dashed contentPosition="center">文件</van-divider>
+
+<navigator wx:for="{{userInfos}}" wx:key="_id" url="./user/user?id={{item._openid}}">
+  <van-card centered thumb-class="thumb" thumb="{{item.avatarUrl}}" title="{{item.nickName}}" desc="{{item.gender === 1 ? '男' : '女'}}" />
+</navigator>
+
+<van-button class="btn-upload" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">+</van-button>

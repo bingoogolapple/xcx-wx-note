@@ -16,7 +16,10 @@
     "pages/demo/database/info/info",
     "pages/demo/file/file",
     "pages/practice/index/index",
-    "pages/demo/function/function"
+    "pages/demo/function/function",
+    "pages/demo/file/user/user",
+    "pages/demo/file/photo/photo",
+    "pages/demo/file/add/add"
   ],
   "tabBar": {
     "list": [
@@ -65,7 +68,10 @@
     "van-icon": "@vant/weapp/icon",
     "van-dialog": "@vant/weapp/dialog",
     "van-card": "@vant/weapp/card",
-    "van-divider": "@vant/weapp/divider"
+    "van-divider": "@vant/weapp/divider",
+    "van-row": "@vant/weapp/row",
+    "van-col": "@vant/weapp/col",
+    "van-panel": "@vant/weapp/panel"
   },
   "permission": {
     "scope.userLocation": {

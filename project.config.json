@@ -120,6 +120,27 @@
 					"pathName": "pages/practice/index/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "用户界面",
+					"pathName": "pages/demo/file/user/user",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "图片界面",
+					"pathName": "pages/demo/file/photo/photo",
+					"query": "id=123",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加图片",
+					"pathName": "pages/demo/file/add/add",
+					"query": "id=123",
+					"scene": null
 				}
 			]
 		}

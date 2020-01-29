@@ -1,0 +1,5 @@
+<image class="head-image" mode="aspectFill" src="https://636c-clinic-dev-gyarq-1301144683.tcb.qcloud.la/1579757364265.png?sign=649f1de21da481e078d37ed9d494df1c&t=1580306293" />
+<view style="margin: 0rpx 50rpx;">
+  <van-button block plain class="btn" type="info" bind:click="download">下载到本地</van-button>
+  <van-button block plain class="btn" type="primary" bind:click="share">分享到朋友圈</van-button>
+</view>
