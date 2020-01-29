@@ -1,10 +1,10 @@
-<navigator url="../cloud/cloud">
-  <button>云开发</button>
+<navigator url="../cloud/cloud" style="display: inline;">
+  <van-button type="primary">云开发</van-button>
 </navigator>
-<navigator url="../profile/profile">
-  <button>profile</button>
+<navigator url="../profile/profile" style="display: inline;">
+  <van-button type="info">profile</van-button>
 </navigator>
-<button open-type="share">分享</button>
+<van-button type="primary" bind:click="copy">复制到粘贴板</van-button>
 <view>{{msg}}</view>
 <image class="box banner" src="{{img}}"></image>
 

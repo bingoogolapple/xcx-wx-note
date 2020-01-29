@@ -1,7 +1,10 @@
 <!--miniprogram/pages/practice/index/index.wxml-->
 <navigator url="../todo/index/index">
-  <button>TODO</button>
+  <van-button block type="primary">TODO</van-button>
 </navigator>
 <navigator url="../movie/movie/movie">
-  <button>movie</button>
+  <van-button block type="info">movie</van-button>
+</navigator>
+<navigator url="../shop/shop">
+  <van-button block type="primary">shop</van-button>
 </navigator>

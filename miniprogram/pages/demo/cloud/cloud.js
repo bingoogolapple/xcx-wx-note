@@ -24,19 +24,5 @@ Page({
         }
       }
     })
-  },
-  copy: function() {
-    wx.setClipboardData({
-      data: '我是复制的内容',
-      success: res => {
-        console.log('复制成功', res)
-        wx.getClipboardData({
-          success: res => {
-            console.log('黏贴成功', res)
-            console.log(res.data)
-          }
-        })
-      }
-    })
   }
 })

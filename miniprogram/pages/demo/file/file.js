@@ -1,7 +1,7 @@
 // miniprogram/pages/demo/file/file.js
 Page({
   data: {
-    avatorUrl: 'cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/demo/avator.png'
+    avatorUrl: 'cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png'
   },
   upload: function() {
     wx.chooseImage({
@@ -79,5 +79,14 @@ Page({
     })
     .then(console.log)
     .catch(console.error)
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '测试标题',
+      path: 'pages/demo/database/info/info',
+      query: 'id=74b140b45e2d25aa05ea5d1b385fd88f',
+      // imageUrl: 'cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png' // 图片地址 或 fileID 都可以
+      imageUrl: 'http://bgashare.bingoogolapple.cn/adapter/imgs/8.png' // 图片地址 或 fileID 都可以
+    }
   }
 })

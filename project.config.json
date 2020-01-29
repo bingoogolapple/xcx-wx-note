@@ -99,6 +99,27 @@
 					"pathName": "pages/demo/database/complex/complex",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "云存储",
+					"pathName": "pages/demo/file/file",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "基础",
+					"pathName": "pages/demo/base/base",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "练习",
+					"pathName": "pages/practice/index/index",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

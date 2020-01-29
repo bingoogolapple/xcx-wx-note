@@ -42,64 +42,18 @@ Page({
     console.log("onClickBox", e)
     console.log(e.target.dataset.id)
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-    return {
-      title: '测试标题',
-      path: 'pages/todo/detail/detail?id=d68532785e2d200205e910614503b839',
-      imageUrl: 'https://636c-clinic-dev-gyarq-1301144683.tcb.qcloud.la/code/1580051206024.jpeg?sign=4372b31ea1728b7ee21e5cd3320212fb&t=1580057434'
-    }
+  copy: function() {
+    wx.setClipboardData({
+      data: '我是复制的内容',
+      success: res => {
+        console.log('复制成功', res)
+        wx.getClipboardData({
+          success: res => {
+            console.log('黏贴成功', res)
+            console.log(res.data)
+          }
+        })
+      }
+    })
   }
 })

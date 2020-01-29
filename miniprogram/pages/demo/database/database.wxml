@@ -11,12 +11,6 @@
 <van-button type="primary" bind:click="addLocation">addLocation</van-button>
 <van-button plain type="primary" bind:click="queryLocation">queryLocation</van-button>
 <van-divider dashed contentPosition="center">GOODS</van-divider>
-<navigator url="./add/add" style="display: inline">
-  <van-button type="primary">add</van-button>
-</navigator>
-<navigator url="./list/list" style="display: inline">
+<navigator url="./list/list" style="display: inline;">
   <van-button plain type="primary">产品列表</van-button>
-</navigator>
-<navigator url="./complex/complex" style="display: inline">
-  <van-button type="primary">complex</van-button>
 </navigator>

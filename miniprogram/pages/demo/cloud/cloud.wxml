@@ -1,13 +1,12 @@
 <navigator url="../database/database">
-  <button>云数据库</button>
+  <van-button block type="primary">云数据库</van-button>
 </navigator>
 <navigator url="../file/file">
-  <button>云存储</button>
+  <van-button block type="info">云存储</van-button>
 </navigator>
 <navigator url="../function/function">
-  <button>云函数</button>
+  <van-button block type="primary">云函数</van-button>
 </navigator>
 <view>其他</view>
 <van-button type="primary" bind:click="scanCode">扫码</van-button>
 <text>{{result}}</text>
-<van-button type="primary" bind:click="copy">复制到粘贴板</van-button>

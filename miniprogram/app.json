@@ -1,7 +1,6 @@
 {
   "pages": [
-    "pages/practice/book/index/index",
-    "pages/practice/book/scan/scan",
+    "pages/practice/shop/shop",
     "pages/practice/todo/index/index",
     "pages/practice/todo/add/add",
     "pages/practice/todo/detail/detail",
@@ -22,14 +21,14 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/practice/book/index/index",
-        "text": "书柜",
+        "pagePath": "pages/practice/shop/shop",
+        "text": "商城",
         "iconPath": "images/movie-normal.png",
         "selectedIconPath": "images/movie-selected.png"
       },
       {
-        "pagePath": "pages/practice/book/scan/scan",
-        "text": "扫码",
+        "pagePath": "pages/demo/database/list/list",
+        "text": "产品列表",
         "iconPath": "images/movie-normal.png",
         "selectedIconPath": "images/movie-selected.png"
       },
@@ -53,7 +52,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#8bc34a",
-    "navigationBarTitleText": "诊所预约系统",
+    "navigationBarTitleText": "BGA王浩",
     "navigationBarTextStyle": "white"
   },
   "sitemapLocation": "sitemap.json",

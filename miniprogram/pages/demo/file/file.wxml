@@ -1,8 +1,8 @@
-<!--miniprogram/pages/demo/file/file.wxml-->
-<button catchtap="upload">上传图片</button>
-<image src="{{avatorUrl}}"></image>
-<image src="cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/demo/avator.png"></image>
-<button catchtap="download">下载图片</button>
-<van-button type="primary" catchtap="download">下载图片</van-button>
-<button catchtap="getTempFileUrl">获取临时文件链接</button>
-<button catchtap="deleteFile">删除文件</button>
+<image style="width: 200rpx; height: 200rpx; margin: 10rpx;" src="{{avatorUrl}}" />
+<image style="width: 200rpx; height: 200rpx; margin: 10rpx;" src="cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png" />
+<van-divider dashed contentPosition="center">上传下载</van-divider>
+<van-button plain type="primary" bind:click="upload">上传图片</van-button>
+<van-button type="primary" bind:click="download">下载图片</van-button>
+<van-button plain type="primary" bind:click="getTempFileUrl">获取临时文件链接</van-button>
+<van-button type="primary" bind:click="deleteFile">删除文件</van-button>
+<van-button plain type="primary" open-type="share">分享</van-button>
