@@ -6,20 +6,26 @@ import Dialog from '@vant/weapp/dialog/dialog'
 Page({
   data: {
     photo: {},
-    showRequestPermissionDialog: false
+    showRequestPermissionDialog: false,
+    params: null
   },
   pageData: {
+    id: null,
     tempFilePath: null
   },
   onLoad: function(options) {
-    this.loadPhoto(options.id)
+    this.setData({
+      params: JSON.stringify(options)
+    })
+    this.pageData.id = options.id
+    this.loadPhoto()
   },
-  loadPhoto: function(id) {
+  loadPhoto: function() {
     wx.showLoading({
       title: '加载中...',
       mask: true
     })
-    photos.doc(id).get().then(res => {
+    photos.doc(this.pageData.id).get().then(res => {
       wx.hideLoading()
       console.log('加载图片信息成功', res)
       this.setData({
@@ -220,7 +226,15 @@ Page({
       console.error('从数据库删除图片失败', err)
     })
   },
+  sharePyq: function() {
+    console.log('分享到朋友圈')
+  },
+  // 什么都不返回时：没有标题、路径为当前页面的路径（包括参数）、当前页面的截图
   onShareAppMessage: function() {
-
+    return {
+      title: '测试标题',
+      path: `pages/demo/file/photo/photo?id=${this.pageData.id}&user=王浩`,
+      imageUrl: this.data.photo.image // 图片地址 或 fileID 都可以
+    }
   }
 })

@@ -1,9 +1,12 @@
+<text>{{params}}</text>
 <image class="head-image" mode="aspectFill" src="{{photo.image}}" />
 <view style="margin: 0rpx 50rpx;">
   <van-button block class="btn" type="info" bind:click="downloadImage">下载到本地</van-button>
   <van-button block class="btn" type="primary" bind:click="getImageUrl">获取图片地址</van-button>
   <van-button block class="btn" type="danger" bind:click="deleteImage">删除图片</van-button>
-  <van-button block class="btn" type="primary" bind:click="share">分享到朋友圈</van-button>
+  
+  <van-button block class="btn" type="primary" open-type="share">直接分享</van-button>
+  <van-button block class="btn" type="primary" bind:click="sharePyq">分享到朋友圈</van-button>
 </view>
 
 <!-- <van-dialog message="请开启「保存到相册」权限，以便保存图片到相册" show="{{ showRequestPermissionDialog }}" bind:close="requestPermission" /> -->
