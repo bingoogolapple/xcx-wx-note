@@ -1,5 +1,5 @@
 {
-  "name": "generate",
+  "name": "generateCode",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "got": "^9.6.0",
+    "tcb-router": "^1.1.2",
     "wx-server-sdk": "latest"
   }
 }
