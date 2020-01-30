@@ -1,66 +1,54 @@
-// miniprogram/pages/demo/file/user/user.js
+const db = wx.cloud.database()
+const userInfos = db.collection('userInfos')
+const photos = db.collection('photos')
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userInfo: null,
+    photos: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  pageData: {
+    openid: null
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onLoad: function(options) {
+    this.pageData.openid = options.openid
+    this.loadUserInfo()
+    this.loadPhotos()
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  loadUserInfo: function() {
+    userInfos.where({
+      _openid: this.pageData.openid
+    }).get().then(res => {
+      console.log('加载用户信息成功', res)
+      this.setData({
+        userInfo: res.data[0]
+      })
+    }).catch(err => {
+      console.error('加载用户信息失败', err)
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  loadPhotos: function() {
+    photos.where({
+      _openid: this.pageData.openid
+    }).get().then(res => {
+      console.log('加载图片列表成功', res)
+      this.setData({
+        photos: res.data
+      })
+    }).catch(err => {
+      console.error('加载图片列表失败', err)
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  openPhotoDetail: function(event) {
+    let id = event.target.dataset.id
+    wx.navigateTo({
+      url: `../photo/photo?id=${id}`,
+      events: {
+        refreshPhotos: data => {
+          console.log('刷新图片列表', data)
+          this.loadPhotos()
+        }
+      }
+    })
   }
 })

@@ -122,17 +122,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "用户界面",
+					"id": 10,
+					"name": "用户详情",
 					"pathName": "pages/demo/file/user/user",
-					"query": "",
+					"query": "openid=oSUQd0bZ3qQONC7Yytp2LtnSFmog",
 					"scene": null
 				},
 				{
 					"id": 11,
-					"name": "图片界面",
+					"name": "图片详情",
 					"pathName": "pages/demo/file/photo/photo",
-					"query": "id=123",
+					"query": "id=74b140b45e324cce07b2deef0e90d876",
 					"scene": null
 				},
 				{

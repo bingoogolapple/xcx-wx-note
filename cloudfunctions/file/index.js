@@ -7,7 +7,11 @@ cloud.init({
 
 const db = cloud.database()
 const userInfos = db.collection('userInfos')
+const photos = db.collection('photos')
 
+/**
+ * 用户登录
+ */
 async function login(ctx) {
   try {
     // 云端添加时默认不会添加 _openid 字段，需要单独设置

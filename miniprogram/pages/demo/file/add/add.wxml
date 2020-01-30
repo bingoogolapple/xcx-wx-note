@@ -1,1 +1,2 @@
-<van-button block plain type="warning">添加图片</van-button>
+<van-button block plain type="warning" bind:click="chooseImage">添加图片</van-button>
+<image style="width: 100%;" src="{{imagePath}}" />
