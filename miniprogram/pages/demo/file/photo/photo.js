@@ -182,8 +182,16 @@ Page({
         this.data.photo.image
       ]
     }).then(res => {
+      // 有效时间只有一天
       // res.fileList[0] {fileID: "cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/photos/1580354764994_7058.png", tempFileURL: "https://636c-clinic-dev-gyarq-1301144683.tcb.qcloud.la/photos/1580354764994_7058.png", maxAge: 86400, status: 0, errMsg: "ok"}
       console.log('获取图片地址成功', res)
+
+      wx.setClipboardData({
+        data: res.fileList[0].tempFileURL,
+        success: res => {
+          console.log('复制成功', res)
+        }
+      })
     }).catch(err => {
       console.error('获取图片地址失败', err)
     })
@@ -224,6 +232,12 @@ Page({
         icon: 'none'
       })
       console.error('从数据库删除图片失败', err)
+    })
+  },
+  previewImage: function() {
+    wx.previewImage({
+      current: this.data.photo.image,
+      urls: [this.data.photo.image]
     })
   },
   sharePyq: function() {

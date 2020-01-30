@@ -1,5 +1,5 @@
 <text>{{params}}</text>
-<image class="head-image" mode="aspectFill" src="{{photo.image}}" />
+<image class="head-image" mode="aspectFill" src="{{photo.image}}" catchtap="previewImage"/>
 <view style="margin: 0rpx 50rpx;">
   <van-button block class="btn" type="info" bind:click="downloadImage">下载到本地</van-button>
   <van-button block class="btn" type="primary" bind:click="getImageUrl">获取图片地址</van-button>
