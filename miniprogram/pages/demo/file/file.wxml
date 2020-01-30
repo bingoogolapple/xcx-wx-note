@@ -1,15 +1,4 @@
-<image style="width: 200rpx; height: 200rpx; margin: 10rpx;" src="{{avatorUrl}}" />
-<image style="width: 200rpx; height: 200rpx; margin: 10rpx;" src="cloud://clinic-dev-gyarq.636c-clinic-dev-gyarq-1301144683/1579757364265.png" />
-<van-divider dashed contentPosition="center">上传下载</van-divider>
-<van-button plain type="primary" bind:click="upload">上传图片</van-button>
-<van-button type="primary" bind:click="download">下载图片</van-button>
-<van-button plain type="primary" bind:click="getTempFileUrl">获取临时文件链接</van-button>
-<van-button type="primary" bind:click="deleteFile">删除文件</van-button>
-<van-button plain type="primary" open-type="share">分享</van-button>
-<van-divider dashed contentPosition="center">文件</van-divider>
-
 <navigator wx:for="{{userInfos}}" wx:key="_id" url="./user/user?openid={{item._openid}}">
   <van-card centered thumb-class="thumb" thumb="{{item.avatarUrl}}" title="{{item.nickName}}" desc="{{item.gender === 1 ? '男' : '女'}}" />
 </navigator>
-
 <van-button class="btn-upload" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">+</van-button>
