@@ -9,6 +9,5 @@
       <van-cell title="时间" value="{{time}}" border="false" />
     </van-cell-group>
   </picker>
-  <button bindtap="requestSubscribeMessage">订阅消息</button>
   <button form-type="submit">提交</button>
 </form>

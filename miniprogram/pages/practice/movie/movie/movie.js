@@ -13,8 +13,9 @@ Page({
       title: '加载中...'
     })
     wx.cloud.callFunction({
-      name: 'movieList',
+      name: 'httpRequest',
       data: {
+        $url: 'movieList',
         page: page
       }
     }).then(res => {
@@ -22,7 +23,7 @@ Page({
       console.log('成功', res)
       this.setData({
         page: page,
-        movieList: this.data.movieList.concat(res.result)
+        movieList: this.data.movieList.concat(res.result.data.datas)
       })
     }).catch(err => {
       wx.hideLoading()

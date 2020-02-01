@@ -1,5 +1,5 @@
 {
-  "name": "go't",
+  "name": "tools",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,10 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "tcb-router": "^1.1.2",
     "got": "^9.6.0",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.5",
+    "tcb-router": "^1.1.2",
     "wx-server-sdk": "latest"
   }
 }

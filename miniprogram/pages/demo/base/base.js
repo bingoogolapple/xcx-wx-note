@@ -55,5 +55,38 @@ Page({
         })
       }
     })
+  },
+  updateTabBarBadge: function() {
+    // https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.setTabBarBadge.html
+    wx.setTabBarBadge({
+      index: 2,
+      text: '11'
+    })
+  },
+  updateTabBarStyle: function() {
+    // https://developers.weixin.qq.com/miniprogram/dev/api/ui/tab-bar/wx.setTabBarStyle.html
+    wx.setTabBarStyle({
+      backgroundColor: '#0000FF'
+    })
+  },
+  chooseAddress: function() {
+    // 需要先申请权限 https://developers.weixin.qq.com/miniprogram/dev/api/open-api/address/wx.chooseAddress.html
+    wx.chooseAddress({
+      success: res => {
+        console.log(res)
+      },
+      fail: err => {
+        console.error(err)
+      }
+    })
+  },
+  handleContact(e) {
+    console.log(e)
+  },
+  bindload(e) {
+    console.log('bindload', e)
+  },
+  binderror(e) {
+    console.log('binderror', e)
   }
 })

@@ -141,6 +141,13 @@
 					"pathName": "pages/demo/file/add/add",
 					"query": "id=123",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "电影列表",
+					"pathName": "pages/practice/movie/movie/movie",
+					"query": "id=123",
+					"scene": null
 				}
 			]
 		}

@@ -1,3 +1,4 @@
+const os = require('os')
 const cloud = require('wx-server-sdk')
 const TcbRouter = require('tcb-router')
 
@@ -62,8 +63,11 @@ async function login(ctx) {
 
 //---------------------------------------------------------------
 exports.main = async(event, context) => {
-  const log = cloud.logger()
-  log.info(event)
+  if (os.type() === 'Darwin') {
+    console.log(event)
+  } else {
+    cloud.logger().info(event)
+  }
 
   const app = new TcbRouter({
     event

@@ -5,6 +5,13 @@
   <van-button type="info">profile</van-button>
 </navigator>
 <van-button type="primary" bind:click="copy">复制到粘贴板</van-button>
+<van-button type="info" bind:click="updateTabBarBadge">updateTabBarBadge</van-button>
+<van-button type="primary" bind:click="updateTabBarStyle">updateTabBarStyle</van-button>
+<van-button type="info" bind:click="chooseAddress">chooseAddress</van-button>
+<!-- 客服必须用原生 button，van-button 打不开 -->
+<van-button type="primary" open-type="concat" bindcontact="handleContact">客服</van-button>
+<button open-type="contact" bindcontact="handleContact">客服</button>
+<official-account bindload="bindload" binderror="binderror"></official-account>
 <view>{{msg}}</view>
 <image class="box banner" src="{{img}}"></image>
 

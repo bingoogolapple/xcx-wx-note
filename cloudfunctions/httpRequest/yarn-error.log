@@ -1,0 +1,43 @@
+Arguments: 
+  /Users/wanghao/.nvm/versions/node/v12.14.0/bin/node /Users/wanghao/.nvm/versions/node/v12.14.0/bin/yarn
+
+PATH: 
+  /Users/wanghao/.nvm/versions/node/v12.14.0/bin:/Applications/script:/Applications/develop/go/bin:/Applications/develop/jadx-0.8.0/bin:/Applications/develop/apache-tomcat-8.5.30/bin:/Applications/develop/apache-maven-3.5.3/bin:/Applications/develop/apache-ant-1.10.3/bin:/Applications/develop/nexus-3.6.2-01-mac/nexus-3.6.2-01/bin:/Applications/develop/AndroidSDK/emulator:/Applications/develop/AndroidSDK/tools:/Applications/develop/AndroidSDK/tools/bin:/Applications/develop/AndroidSDK/tools/proguard/bin:/Applications/develop/AndroidSDK/platform-tools:/Applications/develop/AndroidSDK/ndk-bundle:/Applications/develop/gradle-4.7/bin:/Applications/develop/groovy-2.4.15/bin:/Applications/develop/kotlin-compiler-1.2.41/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/bin:/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/jre/bin:/Applications/develop/dart-sdk/bin:/Applications/develop/flutter/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.14.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/Users/wanghao/Library/Caches/Yarn/v6/npm-punycode-1.4.1-c0d5a63b2718800ad8e1eb0fa5269c84dd41845e-integrity/node_modules/punycode/LICENSE-MIT.txt' -> '/Users/wanghao/git/MiniProgram/weixin/xcx-wx-note/cloudfunctions/httpRequest/node_modules/request/node_modules/punycode/LICENSE-MIT.txt'
+
+npm manifest: 
+  {
+    "name": "go't",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "tcb-router": "^1.1.2",
+      "got": "^9.6.0",
+      "request": "^2.88.0",
+      "request-promise": "^4.2.5",
+      "wx-server-sdk": "latest"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

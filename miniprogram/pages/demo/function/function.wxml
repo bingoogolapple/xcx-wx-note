@@ -1,24 +1,31 @@
 <van-button type="primary" bind:click="sum">sum</van-button>
+
+<van-divider dashed contentPosition="center">TCBRouter</van-divider>
+<van-button type="primary" bind:click="callUser">callUser</van-button>
+<van-button type="info" bind:click="callTimer">callTimer</van-button>
+<van-button type="primary" bind:click="callSingle">callSingle</van-button>
+<van-button type="info" bind:click="cloudFunctionCallCloudFunction">cloudFunctionCallCloudFunction</van-button>
+<van-button type="primary" bind:click="cloudFunctionCallFunction">cloudFunctionCallFunction</van-button>
+<van-button type="info" bind:click="callIndependent">router-callIndependent</van-button>
+<van-button type="primary" bind:click="callIndependentFile">router-callIndependentFile</van-button>
+
 <van-divider dashed contentPosition="center">生成码</van-divider>
 <view>
   <van-button type="info" bind:click="generateLimitQRCode">generateLimitQRCode</van-button>
-  <van-button type="info" bind:click="generateLimitCode">generateLimitCode</van-button>
+  <van-button type="primary" bind:click="generateLimitCode">generateLimitCode</van-button>
   <van-button type="info" bind:click="generateUnlimitCode">generateUnlimitCode</van-button>
   <image style="width: 200rpx;height: 200rpx;" wx:if="{{fileID}}" src="{{fileID}}" />
 </view>
-<van-divider dashed contentPosition="center">got</van-divider>
-<van-button type="primary" bind:click="gotGet">gotGet</van-button>
-<van-button plain type="info" bind:click="gotPost">gotPost</van-button>
 
 <van-divider dashed contentPosition="center">违法违规检查</van-divider>
 <van-button type="primary" bind:click="msgSecCheck">违法违规文本检查</van-button>
 <van-button plain type="info" bind:click="imgSecCheck">违法违规图片检查</van-button>
 
-<van-divider dashed contentPosition="center">TCBRouter</van-divider>
-<van-button type="primary" bind:click="callUser">callUser</van-button>
-<van-button plain type="info" bind:click="callTimer">callTimer</van-button>
-<van-button type="primary" bind:click="callSingle">callSingle</van-button>
-<van-button type="primary" bind:click="cloudFunctionCallCloudFunction">cloudFunctionCallCloudFunction</van-button>
-<van-button type="primary" bind:click="cloudFunctionCallFunction">cloudFunctionCallFunction</van-button>
-<van-button type="primary" bind:click="callIndependent">router-callIndependent</van-button>
-<van-button type="primary" bind:click="callIndependentFile">router-callIndependentFile</van-button>
+<van-divider dashed contentPosition="center">发送消息</van-divider>
+<van-button type="primary" bind:click="sendTemplateMsg">sendTemplateMsg</van-button>
+
+<van-divider dashed contentPosition="center">cloudHttp</van-divider>
+<van-button type="primary" bind:click="gotGet">gotGet</van-button>
+<van-button plain type="info" bind:click="gotPost">gotPost</van-button>
+<van-button type="primary" bind:click="rpGet">rpGet</van-button>
+<van-button plain type="info" bind:click="rpPost">rpPost</van-button>

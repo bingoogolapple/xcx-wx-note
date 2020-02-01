@@ -1,44 +1,163 @@
+const os = require('os')
 const cloud = require('wx-server-sdk')
+const TcbRouter = require('tcb-router')
 const got = require('got')
+const rp = require('request-promise')
 
-cloud.init()
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
-exports.main = async(event, context) => {
-  console.log('event', event)
-  console.log('context', context)
+async function gotGet(ctx) {
   try {
-    if (event.method === 'GET') {
-      const resp = await got.get('http://httpbin.org/get', {
-        json: true
-      })
-      console.log(resp.body)
-      return resp.body
-    } else {
-      let resp = await got.post('http://httpbin.org/post', {
-        json: true,
-        body: {
-          title: '标题',
-          content: '内容'
-        }
-      })
-      console.log(resp.body)
-      return resp.body
+    const resp = await got.get('http://httpbin.org/get', {
+      json: true
+    })
+    console.log(resp.body)
+
+    ctx.body = {
+      code: 0,
+      data: resp.body
     }
   } catch (err) {
-    console.error('失败', err)
-    return err
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
   }
 }
 
-// 本地测试云函数
+async function gotPost(ctx) {
+  try {
+    let resp = await got.post('http://httpbin.org/post', {
+      json: true,
+      body: {
+        title: '标题',
+        content: '内容'
+      }
+    })
+    console.log(resp.body)
 
-// let result = exports.main({
-//   method: 'GET',
-//   userInfo: {
-//     appId: 'wx06837deceb077b5a',
-//     openId: 'oSUQd0bZ3qQONC7Yytp2LtnSFmog'
-//   }
-// }, {
-//   contextKey1: 'contextValue1'
-// })
-// console.log(result)
+    ctx.body = {
+      code: 0,
+      data: resp.body
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+async function rpGet(ctx) {
+  try {
+    let resp = await rp({
+      uri: 'http://httpbin.org/get',
+      json: true
+    })
+    console.log(resp)
+
+    ctx.body = {
+      code: 0,
+      data: resp
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+async function rpPost(ctx) {
+  try {
+    let resp = await rp({
+      method: 'POST',
+      uri: 'http://httpbin.org/post',
+      json: true,
+      body: {
+        title: '标题',
+        content: '内容'
+      }
+    })
+    console.log(resp)
+
+    ctx.body = {
+      code: 0,
+      data: resp
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+async function movieList(ctx) {
+  try {
+    const event = ctx.event
+    let resp = await rp({
+      uri: `https://www.wanandroid.com/article/list/${event.page}/json`,
+      json: true
+    })
+
+    console.log(resp)
+    if (resp.errorCode == 0) {
+      ctx.body = {
+        code: 0,
+        data: resp.data
+      }
+    } else {
+      ctx.body = {
+        code: resp.errorCode,
+        data: resp.errorMsg
+      }
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+//---------------------------------------------------------------
+exports.main = async(event, context) => {
+  if (os.type() === 'Darwin') {
+    console.log(event)
+  } else {
+    cloud.logger().info(event)
+  }
+
+  const app = new TcbRouter({
+    event
+  })
+
+  app.use(async(ctx, next) => {
+    ctx.event = event
+    ctx.context = context
+    await next()
+  })
+
+  app.router('gotGet', gotGet)
+  app.router('gotPost', gotPost)
+  app.router('rpGet', rpGet)
+  app.router('rpPost', rpPost)
+  app.router('movieList', movieList)
+
+  return app.serve()
+}
+
+// 本地测试云函数
+let result = exports.main({
+  $url: 'rpPost',
+  page: 1
+}, {})
+console.log('本地测试结果', result)
