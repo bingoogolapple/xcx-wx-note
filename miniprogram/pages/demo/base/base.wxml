@@ -1,6 +1,23 @@
-<navigator url="../cloud/cloud" style="display: inline;">
-  <van-button type="primary">云开发</van-button>
+<van-divider dashed contentPosition="center">云开发</van-divider>
+<navigator url="../database/database" style="display: inline;">
+  <van-button type="primary">云数据库</van-button>
 </navigator>
+<navigator url="../file/file" style="display: inline;">
+  <van-button type="info">云存储</van-button>
+</navigator>
+<navigator url="../function/function" style="display: inline;">
+  <van-button type="primary">云函数</van-button>
+</navigator>
+
+<van-divider dashed contentPosition="center">练习</van-divider>
+<navigator url="../todo/index/index" style="display: inline;">
+  <van-button type="primary">TODO</van-button>
+</navigator>
+<navigator url="../movie/movie/movie" style="display: inline;">
+  <van-button type="info">movie</van-button>
+</navigator>
+
+<van-divider dashed contentPosition="center">其他</van-divider>
 <navigator url="../profile/profile" style="display: inline;">
   <van-button type="info">profile</van-button>
 </navigator>
@@ -12,6 +29,8 @@
 <van-button type="primary" open-type="concat" bindcontact="handleContact">客服</van-button>
 <button open-type="contact" bindcontact="handleContact">客服</button>
 <official-account bindload="bindload" binderror="binderror"></official-account>
+<van-button type="primary" bind:click="scanCode">扫码</van-button>
+<text>{{scanResult}}</text>
 <view>{{msg}}</view>
 <image class="box banner" src="{{img}}"></image>
 

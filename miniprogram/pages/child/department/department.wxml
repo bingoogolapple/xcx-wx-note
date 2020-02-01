@@ -1,0 +1,9 @@
+<block wx:if="{{departmentList}}">
+  <van-cell wx:for="{{departmentList}}" title="{{item.title}}" wx:key="_id" />
+</block>
+<view wx:else class="empty-container">
+  <image class="empty-image" mode="widthFix" src="/images/empty-box.png" />
+  <text class="empty-text">还没有科室，请先添加科室</text>
+</view>
+
+<van-button class="btn-add" type="primary" bind:click="addDepartment">+</van-button>

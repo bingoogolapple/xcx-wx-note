@@ -1,51 +1,53 @@
 {
   "pages": [
-    "pages/practice/shop/shop",
-    "pages/practice/todo/index/index",
-    "pages/practice/todo/add/add",
-    "pages/practice/todo/detail/detail",
-    "pages/practice/movie/movie/movie",
-    "pages/practice/movie/detail/detail",
+    "pages/profile/profile",
+    "pages/subscribelist/subscribelist",
+    "pages/home/home",
+    "pages/demo/todo/index/index",
+    "pages/demo/todo/add/add",
+    "pages/demo/todo/detail/detail",
+    "pages/demo/movie/movie/movie",
+    "pages/demo/movie/detail/detail",
     "pages/demo/base/base",
     "pages/demo/profile/profile",
-    "pages/demo/cloud/cloud",
     "pages/demo/database/database",
     "pages/demo/database/add/add",
     "pages/demo/database/list/list",
     "pages/demo/database/complex/complex",
     "pages/demo/database/info/info",
     "pages/demo/file/file",
-    "pages/practice/index/index",
     "pages/demo/function/function",
     "pages/demo/file/user/user",
     "pages/demo/file/photo/photo",
-    "pages/demo/file/add/add"
+    "pages/demo/file/add/add",
+    "pages/child/department/department",
+    "pages/child/department/edit/edit"
   ],
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/practice/shop/shop",
-        "text": "商城",
-        "iconPath": "images/movie-normal.png",
-        "selectedIconPath": "images/movie-selected.png"
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home-normal.png",
+        "selectedIconPath": "images/home-selected.png"
       },
       {
-        "pagePath": "pages/demo/database/list/list",
-        "text": "产品列表",
-        "iconPath": "images/movie-normal.png",
-        "selectedIconPath": "images/movie-selected.png"
+        "pagePath": "pages/subscribelist/subscribelist",
+        "text": "预约列表",
+        "iconPath": "images/subscribe-normal.png",
+        "selectedIconPath": "images/subscribe-selected.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/profile-normal.png",
+        "selectedIconPath": "images/profile-selected.png"
       },
       {
         "pagePath": "pages/demo/base/base",
         "text": "基础",
         "iconPath": "images/base-normal.png",
         "selectedIconPath": "images/base-selected.png"
-      },
-      {
-        "pagePath": "pages/practice/index/index",
-        "text": "练习",
-        "iconPath": "images/cloud-normal.png",
-        "selectedIconPath": "images/cloud-selected.png"
       }
     ],
     "color": "#bfbfbf",

@@ -1,0 +1,25 @@
+.user-container {
+  /* (750rpx - 200rpx) / 2，也可以用 flex */
+  padding: 50rpx 275rpx;
+  text-align: center;
+}
+
+.avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.btn-logout {
+  bottom: 50rpx;
+  position: fixed;
+  left: 30rpx;
+  right: 30rpx;
+}
+
+.btn-login {
+  bottom: 300rpx;
+  position: fixed;
+  left: 30rpx;
+  right: 30rpx;
+}

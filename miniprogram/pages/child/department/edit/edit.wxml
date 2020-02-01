@@ -1,0 +1,1 @@
+<van-button type="primary" bind:click="confirm">{{'添加'}}</van-button>

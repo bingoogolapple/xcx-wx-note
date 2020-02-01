@@ -1,0 +1,14 @@
+<block wx:if="{{userInfo}}">
+  <view class="user-container">
+    <image class="avatar" src="{{userInfo.avatarUrl}}" />
+    <text>{{userInfo.nickName}}</text>
+  </view>
+
+  <van-cell title="科室管理" url="/pages/child/department/department" is-link />
+  <van-cell title="医生管理" is-link border="{{ false }}" />
+
+  <van-button block class="btn-logout" bind:click="logout" type="danger">退出登录</van-button>
+</block>
+<block wx:else>
+  <van-button block class="btn-login" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="primary">微信登录</van-button>
+</block>

@@ -1,4 +1,4 @@
-// miniprogram/pages/practice/shop/shop.js
+// miniprogram/pages/subscribelist/subscribelist.js
 Page({
 
   /**

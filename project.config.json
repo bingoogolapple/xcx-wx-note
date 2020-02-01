@@ -53,62 +53,6 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "云开发",
-					"pathName": "pages/demo/cloud/cloud",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "数据库",
-					"pathName": "pages/demo/database/database",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "云函数",
-					"pathName": "pages/demo/function/function",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "商品详情页",
-					"pathName": "pages/demo/database/info/info",
-					"query": "id=d68532785e30289806f854de279a3b2e",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "添加商品",
-					"pathName": "pages/demo/database/add/add",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 5,
-					"name": "商品列表",
-					"pathName": "pages/demo/database/list/list",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "复杂操作",
-					"pathName": "pages/demo/database/complex/complex",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "云存储",
-					"pathName": "pages/demo/file/file",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "基础",
 					"pathName": "pages/demo/base/base",
 					"query": "",
@@ -116,37 +60,9 @@
 				},
 				{
 					"id": -1,
-					"name": "练习",
-					"pathName": "pages/practice/index/index",
+					"name": "科室管理",
+					"pathName": "pages/child/department/department",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "用户详情",
-					"pathName": "pages/demo/file/user/user",
-					"query": "openid=oSUQd0bZ3qQONC7Yytp2LtnSFmog",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "图片详情",
-					"pathName": "pages/demo/file/photo/photo",
-					"query": "id=0ec685215e32919d07d6292e07aca1d3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "添加图片",
-					"pathName": "pages/demo/file/add/add",
-					"query": "id=123",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "电影列表",
-					"pathName": "pages/practice/movie/movie/movie",
-					"query": "id=123",
 					"scene": null
 				}
 			]

@@ -37,7 +37,7 @@ async function login(ctx) {
       user._id = result._id
     } else {
       let id = result.data[0]._id
-      result = await userInfos.doc(id).set({
+      result = await userInfos.doc(id).update({
         data: user
       })
       // 不管是 update 还是 set，都要放到调用后再设置 _id，否则会报错「不能更新_id的值;」
