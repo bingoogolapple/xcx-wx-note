@@ -1,9 +1,25 @@
-<block wx:if="{{departmentList}}">
-  <van-cell bind:click="onClickItem" data-id="{{item._id}}" wx:for="{{departmentList}}" title="{{item.title}}" wx:key="_id" />
+<block wx:if="{{departmentTree}}">
+  <van-collapse value="{{ activeId }}" bind:change="onActiveDepartmentChanged" accordion>
+    <block wx:for="{{departmentTree}}" wx:for-item="rootItem" wx:key="_id">
+      <van-collapse-item wx:if="{{rootItem.children.length > 0}}" name="{{rootItem._id}}">
+        <view slot="title">
+          <text style="display:inline-block; width: 60%;">{{rootItem.title}}</text>
+          <van-icon custom-style="padding: 15rpx 20rpx;" data-id="{{rootItem._id}}" catchtap="onClickItem" name="setting-o" />
+        </view>
+        <van-cell clickable bind:click="onClickItem" data-id="{{item._id}}" wx:for="{{rootItem.children}}" title="{{item.title}}" wx:key="_id" />
+      </van-collapse-item>
+
+      <view wx:else>
+        <van-divider hairline customStyle="margin:0rpx;" />
+        <van-cell clickable border="{{false}}" bind:click="onClickItem" data-id="{{rootItem._id}}" title="{{rootItem.title}}" />
+      </view>
+    </block>
+  </van-collapse>
 </block>
+
 <view wx:else class="empty-container">
-  <image class="empty-image" mode="widthFix" src="/images/empty-box.png" />
-  <text class="empty-text">还没有科室，请先添加科室</text>
+  <image style="width: 40%;" mode="widthFix" src="/images/empty-box.png" />
+  <text style="color: #bfbfbf;">还没有科室，请先添加科室</text>
 </view>
 
-<van-button class="btn-add" type="primary" bind:click="addDepartment">+</van-button>
+<van-button round custom-style="width: 100rpx; height: 100rpx; position: fixed; bottom: 50rpx; right: 50rpx;" type="primary" bind:click="addDepartment">+</van-button>

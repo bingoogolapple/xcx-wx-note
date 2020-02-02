@@ -77,6 +77,27 @@
 					"pathName": "pages/child/department/edit/edit",
 					"query": "id=d68532785e366061092dae6e3bf5762c",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/profile/profile",
+					"query": "id=d68532785e366061092dae6e3bf5762c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "诊所简介",
+					"pathName": "pages/child/clinic/view/view",
+					"query": "id=d68532785e366061092dae6e3bf5762c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "设置诊所信息",
+					"pathName": "pages/child/clinic/edit/edit",
+					"query": "id=d68532785e366061092dae6e3bf5762c",
+					"scene": null
 				}
 			]
 		}

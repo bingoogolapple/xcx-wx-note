@@ -64,7 +64,6 @@ Page({
     })
   },
   onTitleChanged(event) {
-    console.log('科室名称发生变化', event.detail)
     this.data.department.title = event.detail.trim()
   },
   showChooseParentActionSheet() {
@@ -95,18 +94,33 @@ Page({
   confirm() {
     console.log('提交科室', this.data.department)
     let title = this.data.department.title
-    if (!title) {
+    if (title.length == 0) {
       app.showToast('请填写科室名称')
       return
     }
 
-    // TODO 检查重复
-
-    if (this.data.isEdit) {
-      this.performUpdate()
-    } else {
-      this.performAdd()
-    }
+    // 检查重复
+    departmentCollection.where({
+      title: title
+    }).get().then(res => {
+      console.log('根据标题查询', res)
+      if (this.data.isEdit) {
+        if (res.data.length == 0 || res.data[0]._id === this.data.department._id) {
+          this.performUpdate()
+        } else {
+          app.showToast('科室名称已存在')
+        }
+      } else {
+        if (res.data.length == 0) {
+          this.performAdd()
+        } else {
+          app.showToast('科室名称已存在')
+        }
+      }
+    }).catch(err => {
+      console.error('根据名称查询失败', err)
+      app.showToast(`${this.data.isEdit? '编辑':'添加'}失败`)
+    })
   },
   performAdd() {
     app.showLoading('添加中...')

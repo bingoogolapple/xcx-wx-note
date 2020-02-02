@@ -1,0 +1,10 @@
+<image style="width:100%" src="{{clinic.image}}" />
+<van-cell-group>
+  <van-cell center clickable border="{{false}}" title="导航到诊所" value="{{clinic.locationDesc}}" bind:click="locationToClinic">
+    <van-icon slot="right-icon" name="location-o" />
+  </van-cell>
+</van-cell-group>
+<van-cell-group>
+  <van-cell border="{{false}}" title="诊所简介" />
+</van-cell-group>
+<view style="padding: 20rpx;">{{clinic.intro}}</view>

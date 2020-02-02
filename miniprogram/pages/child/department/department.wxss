@@ -5,17 +5,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.empty-image {
-  width: 40%;
-}
-
-.empty-text {
-  color: #bfbfbf;
-}
-
-.btn-add {
-  position: fixed;
-  bottom: 50rpx;
-  right: 50rpx;
-}

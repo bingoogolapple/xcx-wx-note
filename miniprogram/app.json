@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/profile/profile",
     "pages/subscribelist/subscribelist",
-    "pages/home/home",
     "pages/demo/todo/index/index",
     "pages/demo/todo/add/add",
     "pages/demo/todo/detail/detail",
@@ -21,7 +21,9 @@
     "pages/demo/file/photo/photo",
     "pages/demo/file/add/add",
     "pages/child/department/department",
-    "pages/child/department/edit/edit"
+    "pages/child/department/edit/edit",
+    "pages/child/clinic/edit/edit",
+    "pages/child/clinic/view/view"
   ],
   "tabBar": {
     "list": [
@@ -42,12 +44,6 @@
         "text": "我的",
         "iconPath": "images/profile-normal.png",
         "selectedIconPath": "images/profile-selected.png"
-      },
-      {
-        "pagePath": "pages/demo/base/base",
-        "text": "基础",
-        "iconPath": "images/base-normal.png",
-        "selectedIconPath": "images/base-selected.png"
       }
     ],
     "color": "#bfbfbf",
@@ -77,6 +73,8 @@
     "van-grid": "@vant/weapp/grid",
     "van-grid-item": "@vant/weapp/grid-item",
     "van-action-sheet": "@vant/weapp/action-sheet",
+    "van-collapse": "@vant/weapp/collapse",
+    "van-collapse-item": "@vant/weapp/collapse-item",
     "van-picker": "@vant/weapp/picker"
   },
   "permission": {

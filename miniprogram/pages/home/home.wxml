@@ -1,2 +1,6 @@
-<!--miniprogram/pages/home/home.wxml-->
-<text>miniprogram/pages/home/home.wxml</text>
+<van-grid column-num="2" clickable square>
+  <van-grid-item icon="/images/home-registration.png" bind:click="onClickItem" text="预约挂号" />
+  <van-grid-item icon="/images/home-map-navigation.png" bind:click="locationToClinic" text="来诊导航" />
+  <van-grid-item icon="/images/home-hospital.png" url="/pages/child/clinic/view/view" text="诊所介绍" />
+  <van-grid-item icon="/images/home-doctor.png" bind:click="onClickItem" text="科室医生" />
+</van-grid>

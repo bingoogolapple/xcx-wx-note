@@ -4,8 +4,11 @@
     <text>{{userInfo.nickName}}</text>
   </view>
 
-  <van-cell title="科室管理" url="/pages/child/department/department" is-link />
-  <van-cell title="医生管理" is-link border="{{ false }}" />
+  <van-cell-group>
+    <van-cell title="科室管理" url="/pages/child/department/department" is-link />
+    <van-cell title="医生管理" is-link />
+    <van-cell title="设置诊所信息" url="/pages/child/clinic/edit/edit" is-link border="{{ false }}" />
+  </van-cell-group>
 
   <van-button block class="btn-logout" bind:click="logout" type="danger">退出登录</van-button>
 </block>

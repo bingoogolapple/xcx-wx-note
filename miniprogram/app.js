@@ -30,21 +30,38 @@ App({
   },
   logout() {
     wx.setStorageSync('userInfo', null)
-    // wx.redirectTo({
-    //   url: 'pages/demo/base/base'
-    // })
   },
-  isNotLogin() {
+  checkNotLogin() {
     if (this.globalData.userInfo != null) {
       return false
     }
 
-    wx.redirectTo({
-      url: 'pages/demo/base/base'
+    // wx.redirectTo({
+    //   url: '/pages/profile/profile'
+    // })
+
+    wx.switchTab({
+      url: '/pages/profile/profile'
     })
     return true
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    clinic: null
+  },
+  locationToClinic() {
+    if (this.globalData.clinic.location == null) {
+      app.showToast('完善中...')
+      return
+    }
+
+    let location = this.globalData.clinic.location
+    // https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.openLocation.html
+    wx.openLocation({
+      latitude: location.latitude,
+      longitude: location.longitude,
+      name: location.name,
+      address: location.address
+    })
   }
 })

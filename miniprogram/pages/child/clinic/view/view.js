@@ -4,15 +4,21 @@ const app = getApp()
 
 Page({
   data: {
-    clinic: null
+    clinic: {
+      image: '/images/empty-box.png',
+      intro: '完善中...',
+      location: null,
+      locationDesc: '完善中...'
+    }
   },
-  onClickItem() {
-    app.showToast('敬请期待')
-    app.checkNotLogin()
+  onLoad(options) {
+    this.loadClinic()
   },
-  locationToClinic() {
+  loadClinic() {
     if (app.globalData.clinic) {
-      app.locationToClinic()
+      this.setData({
+        clinic: app.globalData.clinic
+      })
     } else {
       app.showLoading('加载中...')
       clinicCollection.limit(1).get().then(res => {
@@ -20,8 +26,10 @@ Page({
         console.log('加载诊所信息成功', res)
         if (res.data.length > 0) {
           app.globalData.clinic = res.data[0]
+          this.setData({
+            clinic: app.globalData.clinic
+          })
         }
-        app.locationToClinic()
       }).catch(err => {
         wx.hideLoading()
         app.showToast('加载诊所信息失败')
@@ -29,7 +37,7 @@ Page({
       })
     }
   },
-  onShareAppMessage: function() {
-
+  locationToClinic() {
+    app.locationToClinic()
   }
 })

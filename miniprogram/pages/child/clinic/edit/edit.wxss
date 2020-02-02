@@ -1,0 +1,6 @@
+.btn-container {
+  bottom: 50rpx;
+  position: fixed;
+  left: 30rpx;
+  right: 30rpx;
+}

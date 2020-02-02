@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "科室管理"
+  "navigationBarTitleText": "科室管理",
+  "enablePullDownRefresh": true
 }
