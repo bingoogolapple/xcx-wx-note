@@ -120,45 +120,36 @@ Page({
     this.data.clinic.intro = event.detail.trim()
   },
   submit() {
-    if (this.data.clinic.location == null) {
+    let clinic = this.data.clinic
+    if (clinic.location == null) {
       app.showToast('请选择诊所位置')
       return
     }
-    if (this.data.clinic.intro.length == 0) {
+    if (clinic.intro.length == 0) {
       app.showToast('请填写诊所简介')
       return
     }
-    let clinic = this.data.clinic
-    if (clinic._id) {
-      console.log('修改')
-      clinicCollection.doc(clinic._id).update({
-        data: {
-          image: clinic.image,
-          intro: clinic.intro,
-          location: clinic.location,
-          locationDesc: clinic.locationDesc
-        }
-      }).then(res => {
+
+    app.showLoading('提交中...')
+    wx.cloud.callFunction({
+      name: 'clinic',
+      data: {
+        $url: "addOrUpdateClinic",
+        clinic: clinic
+      }
+    }).then(res => {
+      wx.hideLoading()
+      if (res.result.code == 0) {
         console.log('设置成功', res)
         wx.navigateBack({})
-      }).catch(err => {
-        console.error('设置失败', err)
-      })
-    } else {
-      console.log('添加')
-      clinicCollection.add({
-        data: {
-          image: clinic.image,
-          intro: clinic.intro,
-          location: clinic.location,
-          locationDesc: clinic.locationDesc
-        }
-      }).then(res => {
-        console.log('设置成功', res)
-        wx.navigateBack({})
-      }).catch(err => {
-        console.error('设置失败', err)
-      })
-    }
+      } else {
+        console.error('设置失败', res)
+        app.showToast('设置失败')
+      }
+    }).catch(err => {
+      wx.hideLoading()
+      console.error('设置失败', err)
+      app.showToast('设置失败')
+    })
   }
 })

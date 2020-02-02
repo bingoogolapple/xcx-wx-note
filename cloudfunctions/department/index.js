@@ -77,7 +77,7 @@ async function departmentTree(ctx) {
     // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/aggregate/Aggregate.lookup.html
     const result = await departmentCollection.aggregate()
       .match({
-        parentId: 'root'
+        parentId: ROOT_ID
       })
       .lookup({
         from: 'department',

@@ -46,22 +46,29 @@ App({
     return true
   },
   globalData: {
-    userInfo: null,
-    clinic: null
+    userInfo: null
   },
   locationToClinic() {
-    if (this.globalData.clinic.location == null) {
-      app.showToast('完善中...')
-      return
-    }
-
-    let location = this.globalData.clinic.location
-    // https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.openLocation.html
-    wx.openLocation({
-      latitude: location.latitude,
-      longitude: location.longitude,
-      name: location.name,
-      address: location.address
+    this.showLoading('加载中...')
+    wx.cloud.database().collection('clinic').limit(1).get().then(res => {
+      wx.hideLoading()
+      console.log('加载诊所信息成功', res)
+      if (res.data.length > 0) {
+        let location = res.data[0].location
+        // https://developers.weixin.qq.com/miniprogram/dev/api/location/wx.openLocation.html
+        wx.openLocation({
+          latitude: location.latitude,
+          longitude: location.longitude,
+          name: location.name,
+          address: location.address
+        })
+      } else {
+        this.showToast('完善中...')
+      }
+    }).catch(err => {
+      wx.hideLoading()
+      this.showToast('加载诊所信息失败')
+      console.error('加载诊所信息失败', err)
     })
   }
 })

@@ -15,27 +15,20 @@ Page({
     this.loadClinic()
   },
   loadClinic() {
-    if (app.globalData.clinic) {
-      this.setData({
-        clinic: app.globalData.clinic
-      })
-    } else {
-      app.showLoading('加载中...')
-      clinicCollection.limit(1).get().then(res => {
-        wx.hideLoading()
-        console.log('加载诊所信息成功', res)
-        if (res.data.length > 0) {
-          app.globalData.clinic = res.data[0]
-          this.setData({
-            clinic: app.globalData.clinic
-          })
-        }
-      }).catch(err => {
-        wx.hideLoading()
-        app.showToast('加载诊所信息失败')
-        console.error('加载诊所信息失败', err)
-      })
-    }
+    app.showLoading('加载中...')
+    clinicCollection.limit(1).get().then(res => {
+      wx.hideLoading()
+      console.log('加载诊所信息成功', res)
+      if (res.data.length > 0) {
+        this.setData({
+          clinic: res.data[0]
+        })
+      }
+    }).catch(err => {
+      wx.hideLoading()
+      app.showToast('加载诊所信息失败')
+      console.error('加载诊所信息失败', err)
+    })
   },
   locationToClinic() {
     app.locationToClinic()
