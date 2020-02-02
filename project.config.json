@@ -64,6 +64,19 @@
 					"pathName": "pages/child/department/department",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "添加科室",
+					"pathName": "pages/child/department/edit/edit",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "编辑科室",
+					"pathName": "pages/child/department/edit/edit",
+					"query": "id=d68532785e366061092dae6e3bf5762c",
+					"scene": null
 				}
 			]
 		}

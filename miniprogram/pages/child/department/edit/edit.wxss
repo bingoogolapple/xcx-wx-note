@@ -1,1 +1,10 @@
-/* miniprogram/pages/child/department/add/add.wxss */
+.btn-container {
+  bottom: 50rpx;
+  position: fixed;
+  left: 30rpx;
+  right: 30rpx;
+}
+
+.btn-delete {
+  margin: 40rpx;
+}

@@ -1,5 +1,5 @@
 <block wx:if="{{departmentList}}">
-  <van-cell wx:for="{{departmentList}}" title="{{item.title}}" wx:key="_id" />
+  <van-cell bind:click="onClickItem" data-id="{{item._id}}" wx:for="{{departmentList}}" title="{{item.title}}" wx:key="_id" />
 </block>
 <view wx:else class="empty-container">
   <image class="empty-image" mode="widthFix" src="/images/empty-box.png" />

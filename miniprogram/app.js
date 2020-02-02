@@ -20,7 +20,6 @@ App({
     })
   },
   showLoading(msg, mask = true) {
-    console.log('mask', mask)
     wx.showLoading({
       title: msg,
       mask: mask

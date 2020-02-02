@@ -1,1 +1,12 @@
-<van-button type="primary" bind:click="confirm">{{'添加'}}</van-button>
+<van-cell-group>
+  <van-field bind:change="onTitleChanged" required clearable value="{{ department.title }}" label="科室名称" placeholder="请输入科室名称" input-align="right" />
+  <van-cell bind:click="showChooseParentActionSheet" title="父级科室" is-link value="{{parentDepartment.title}}" />
+</van-cell-group>
+<view class="btn-container">
+  <van-button block type="primary" bind:click="confirm">{{isEdit ? '修改' : '添加'}}</van-button>
+  <van-button wx:if="{{isEdit}}" class="btn-delete" block type="danger" bind:click="delete">删除</van-button>
+</view>
+
+<van-action-sheet bind:close="hideChooseParentActionSheet" close-on-click-overlay show="{{ showChooseParentActionSheet }}" title="选择父科室">
+  <van-picker default-index="{{ defaultIndex }}" value-key="title" columns="{{ rootDepartmentList }}" bind:change="onRootDepartmenChanged" />
+</van-action-sheet>

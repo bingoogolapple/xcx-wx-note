@@ -18,7 +18,7 @@
 }
 
 .btn-login {
-  bottom: 300rpx;
+  bottom: 40%;
   position: fixed;
   left: 30rpx;
   right: 30rpx;
