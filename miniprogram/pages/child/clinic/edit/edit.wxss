@@ -4,3 +4,7 @@
   left: 30rpx;
   right: 30rpx;
 }
+
+.van-field__input--textarea {
+  max-height: 300rpx;
+}

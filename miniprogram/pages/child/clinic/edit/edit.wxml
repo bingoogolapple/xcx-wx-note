@@ -1,9 +1,9 @@
-<image style="width:100%" catchtap="chooseImage" src="{{clinic.image}}" />
+<image class="clinic-logo" catchtap="chooseImage" src="{{clinic.image}}" />
 <van-cell-group>
   <van-field use-button-slot required disabled value="{{clinic.locationDesc}}" label="诊所位置" placeholder="请选择诊所位置">
     <van-button slot="button" bind:click="chooseClinicLocation" size="small" type="primary">选择</van-button>
   </van-field>
-  <van-field required autosize bind:change="onIntroChanged" value="{{clinic.intro}}" label="诊所简介" type="textarea" placeholder="请输入诊所简介" border="{{ false }}" />
+  <van-field autosize required bind:change="onIntroChanged" value="{{clinic.intro}}" label="诊所简介" type="textarea" placeholder="请输入诊所简介" border="{{ false }}" />
 </van-cell-group>
 
 <view class="btn-container">

@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     clinic: {
-      image: '/images/empty-box.png',
+      image: '/images/empty-image.png',
       intro: '完善中...',
       location: null,
       locationDesc: '完善中...'

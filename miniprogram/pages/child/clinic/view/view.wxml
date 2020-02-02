@@ -1,4 +1,4 @@
-<image style="width:100%" src="{{clinic.image}}" />
+<image class="clinic-logo" src="{{clinic.image}}" />
 <van-cell-group>
   <van-cell center clickable border="{{false}}" title="导航到诊所" value="{{clinic.locationDesc}}" bind:click="locationToClinic">
     <van-icon slot="right-icon" name="location-o" />

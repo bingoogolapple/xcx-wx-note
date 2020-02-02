@@ -2,10 +2,12 @@ const db = wx.cloud.database()
 const clinicCollection = db.collection('clinic')
 const app = getApp()
 
+const DEFAULT_IMAGE = '/images/empty-image.png'
+
 Page({
   data: {
     clinic: {
-      image: '/images/empty-box.png',
+      image: DEFAULT_IMAGE,
       intro: '',
       location: null,
       locationDesc: ''
@@ -32,7 +34,21 @@ Page({
     })
   },
   chooseImage() {
-    console.log('选择图片')
+    // https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html
+    wx.chooseImage({
+      count: 1,
+      success: res => {
+        console.log('选择图片或拍照成功', res)
+        this.data.clinic.image = res.tempFilePaths[0]
+        this.setData({
+          clinic: this.data.clinic,
+        })
+      },
+      fail: err => {
+        // {errMsg: "chooseImage:fail cancel"}
+        console.log('选择图片或拍照失败', err)
+      }
+    })
   },
   showNoPermission: function() {
     app.showToast('未开启位置权限，无法设置诊所位置')
@@ -121,6 +137,11 @@ Page({
   },
   submit() {
     let clinic = this.data.clinic
+    console.log(clinic)
+    if (clinic.image === DEFAULT_IMAGE) {
+      app.showToast('请选择诊所图片')
+      return
+    }
     if (clinic.location == null) {
       app.showToast('请选择诊所位置')
       return
@@ -130,12 +151,37 @@ Page({
       return
     }
 
+    if (clinic.image.startsWith('cloud://')) {
+      this.performSubmit()
+    } else {
+      this.uploadImage()
+    }
+  },
+  uploadImage() {
+    app.showLoading('上传诊所中...')
+    let image = this.data.clinic.image
+    let suffix = /\.\w+$/.exec(image)[0]
+    // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/storage/uploadFile/client.uploadFile.html
+    wx.cloud.uploadFile({
+      cloudPath: `clinic/${new Date().getTime()}_${Math.floor(Math.random() * 10000)}${suffix}`,
+      filePath: image
+    }).then(res => {
+      console.log('上传成功', res)
+      this.data.clinic.image = res.fileID
+      this.performSubmit()
+    }).catch(err => {
+      wx.hideLoading()
+      app.showToast('上传诊所图片失败')
+      console.error('上传失败', err.errMsg)
+    })
+  },
+  performSubmit() {
     app.showLoading('提交中...')
     wx.cloud.callFunction({
       name: 'clinic',
       data: {
         $url: "addOrUpdateClinic",
-        clinic: clinic
+        clinic: this.data.clinic
       }
     }).then(res => {
       wx.hideLoading()
