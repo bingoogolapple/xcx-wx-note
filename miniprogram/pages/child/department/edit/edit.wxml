@@ -4,7 +4,7 @@
 </van-cell-group>
 <view class="btn-container">
   <van-button block type="primary" bind:click="confirm">{{isEdit ? '修改' : '添加'}}</van-button>
-  <van-button wx:if="{{isEdit}}" class="btn-delete" block type="danger" bind:click="delete">删除</van-button>
+  <van-button wx:if="{{isEdit}}" class="btn-delete" block type="danger" bind:click="deleteDepartment">删除</van-button>
 </view>
 
 <van-action-sheet bind:close="hideChooseParentActionSheet" close-on-click-overlay show="{{ showChooseParentActionSheet }}" title="选择父科室">

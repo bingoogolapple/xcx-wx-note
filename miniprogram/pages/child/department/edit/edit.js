@@ -106,13 +106,13 @@ Page({
       console.log('根据标题查询', res)
       if (this.data.isEdit) {
         if (res.data.length == 0 || res.data[0]._id === this.data.department._id) {
-          this.performUpdate()
+          this.performAddOrUpdate('修改')
         } else {
           app.showToast('科室名称已存在')
         }
       } else {
         if (res.data.length == 0) {
-          this.performAdd()
+          this.performAddOrUpdate('添加')
         } else {
           app.showToast('科室名称已存在')
         }
@@ -122,49 +122,50 @@ Page({
       app.showToast(`${this.data.isEdit? '编辑':'添加'}失败`)
     })
   },
-  performAdd() {
-    app.showLoading('添加中...')
-    departmentCollection.add({
-      data: this.data.department
-    }).then(res => {
-      wx.hideLoading()
-      console.log('添加成功', res.data)
-      const eventChannel = this.getOpenerEventChannel()
-      eventChannel.emit('refreshDepartmentList', {});
-      wx.navigateBack({})
-    }).catch(err => {
-      wx.hideLoading()
-      console.error('添加失败', err)
-      app.showToast('添加失败')
-    })
-  },
-  performUpdate() {
-    app.showLoading('修改中...')
-    departmentCollection.doc(this.data.department._id).update({
+  performAddOrUpdate(prefix) {
+    app.showLoading(`${prefix}中...`)
+    wx.cloud.callFunction({
+      name: 'department',
       data: {
-        parentId: this.data.department.parentId,
-        title: this.data.department.title
+        $url: "addOrUpdateDepartment",
+        department: this.data.department
       }
     }).then(res => {
       wx.hideLoading()
-      console.log('修改成功', res.data)
-      const eventChannel = this.getOpenerEventChannel()
-      eventChannel.emit('refreshDepartmentList', {});
-      wx.navigateBack({})
+      if (res.result.code == 0) {
+        console.log(`${prefix}成功`, res)
+        const eventChannel = this.getOpenerEventChannel()
+        eventChannel.emit('refreshDepartmentList', {});
+        wx.navigateBack({})
+      } else {
+        console.error(`${prefix}失败`, res)
+        app.showToast(`${prefix}失败`)
+      }
     }).catch(err => {
       wx.hideLoading()
-      console.error('修改失败', err)
-      app.showToast('修改失败')
+      console.error(`${prefix}失败`, err)
+      app.showToast(`${prefix}失败`)
     })
   },
-  delete() {
+  deleteDepartment() {
     app.showLoading('删除中...')
-    departmentCollection.doc(this.data.department._id).remove().then(res => {
+    wx.cloud.callFunction({
+      name: 'department',
+      data: {
+        $url: "deleteDepartment",
+        id: this.data.department._id
+      }
+    }).then(res => {
       wx.hideLoading()
-      console.log('删除成功', res.data)
-      const eventChannel = this.getOpenerEventChannel()
-      eventChannel.emit('refreshDepartmentList', {});
-      wx.navigateBack({})
+      if (res.result.code == 0) {
+        console.log('删除成功', res)
+        const eventChannel = this.getOpenerEventChannel()
+        eventChannel.emit('refreshDepartmentList', {});
+        wx.navigateBack({})
+      } else {
+        console.error('删除失败', res)
+        app.showToast('删除失败')
+      }
     }).catch(err => {
       wx.hideLoading()
       console.error('删除失败', err)
