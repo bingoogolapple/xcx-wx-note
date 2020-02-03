@@ -6,7 +6,7 @@
 
   <van-cell-group>
     <van-cell title="科室管理" url="/pages/child/department/department" is-link />
-    <van-cell title="医生管理" is-link />
+    <van-cell title="用户管理" url="/pages/child/user/list/list" is-link />
     <van-cell title="设置诊所信息" url="/pages/child/clinic/edit/edit" is-link border="{{ false }}" />
   </van-cell-group>
 

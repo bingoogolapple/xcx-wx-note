@@ -69,6 +69,7 @@
 					"id": -1,
 					"name": "添加科室",
 					"pathName": "pages/child/department/edit/edit",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -97,6 +98,12 @@
 					"name": "设置诊所信息",
 					"pathName": "pages/child/clinic/edit/edit",
 					"query": "id=d68532785e366061092dae6e3bf5762c",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "用户管理",
+					"pathName": "pages/child/user/list/list",
 					"scene": null
 				}
 			]

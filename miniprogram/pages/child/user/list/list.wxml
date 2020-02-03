@@ -1,0 +1,16 @@
+<van-dropdown-menu>
+  <van-dropdown-item bind:change="onFilterRoleChanged" value="{{ filterRole }}" options="{{ roleList }}" />
+</van-dropdown-menu>
+<van-card wx:for="{{userInfoList}}" wx:key="_id" desc="　" catchtap="onClickItem" title="{{item.nickName}}" thumb="{{item.avatarUrl}}" data-user="{{item}}">
+  <view slot="tags">
+    <block wx:if="{{item.role.length > 0}}">
+      <block wx:for="{{item.role}}" wx:key="*this" wx:for-item="roleItem">
+        <van-tag wx:if="{{roleItem==='管理员'}}" style="margin:5rpx;" plain round type="danger">{{roleItem}}</van-tag>
+        <van-tag wx:elif="{{roleItem==='医生'}}" style="margin:5rpx;" plain round type="success">{{roleItem}}</van-tag>
+      </block>
+    </block>
+    <block wx:else>
+      <van-tag style="margin:5rpx;" plain round type="primary">普通用户</van-tag>
+    </block>
+  </view>
+</van-card>

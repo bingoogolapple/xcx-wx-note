@@ -10,6 +10,33 @@ const db = cloud.database()
 const userInfos = db.collection('userInfos')
 
 /**
+ * 修改角色
+ */
+async function updateRole(ctx) {
+  try {
+    const result = await userInfos.doc(ctx.event.userId).update({
+      data: {
+        role: ctx.event.role
+      }
+    })
+    console.log('修改角色结果', result)
+
+    const isSuccess = result.errMsg.indexOf(':ok') !== -1
+    ctx.body = {
+      code: isSuccess ? 0 : 1,
+      data: isSuccess,
+      errMsg: isSuccess ? '修改角色成功' : '修改角色失败'
+    }
+  } catch (err) {
+    console.error('修改角色失败', err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+/**
  * 用户登录
  */
 async function login(ctx) {
@@ -29,6 +56,7 @@ async function login(ctx) {
     console.log('用户登录-查询结果', result)
 
     if (result.data.length === 0) {
+      user.role = []
       result = await userInfos.add({
         data: user
       })
@@ -48,9 +76,11 @@ async function login(ctx) {
       console.log('用户登录-更新结果', result)
     }
 
+    const isSuccess = result.errMsg.indexOf(':ok') !== -1
     ctx.body = {
-      code: 0,
-      data: user
+      code: isSuccess ? 0 : 1,
+      data: isSuccess ? user : null,
+      errMsg: isSuccess ? '登录成功' : '登录失败'
     }
   } catch (err) {
     console.error('用户登录-失败', err)
@@ -80,6 +110,7 @@ exports.main = async(event, context) => {
   })
 
   app.router('login', login)
+  app.router('updateRole', updateRole)
 
   return app.serve()
 }
