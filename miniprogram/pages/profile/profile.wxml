@@ -1,13 +1,27 @@
 <block wx:if="{{userInfo}}">
   <view class="user-container">
-    <image class="avatar" src="{{userInfo.avatarUrl}}" />
-    <text>{{userInfo.nickName}}</text>
+    <navigator style="background: none;" url="/pages/child/user/view/view?id={{userInfo._id}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" />
+    </navigator>
+    <text class="nickname">{{userInfo.nickName}}</text>
+    <view>
+      <block wx:if="{{userInfo.role.length > 0}}">
+        <block wx:for="{{userInfo.role}}" wx:key="*this" wx:for-item="roleItem">
+          <van-tag wx:if="{{roleItem==='管理员'}}" style="margin:5rpx;" plain round type="danger">{{roleItem}}</van-tag>
+          <van-tag wx:elif="{{roleItem==='医生'}}" style="margin:5rpx;" plain round type="success">{{roleItem}}</van-tag>
+        </block>
+      </block>
+      <block wx:else>
+        <van-tag style="margin:5rpx;" plain round type="primary">普通用户</van-tag>
+      </block>
+    </view>
   </view>
 
   <van-cell-group>
-    <van-cell title="科室管理" url="/pages/child/department/department" is-link />
-    <van-cell title="用户管理" url="/pages/child/user/list/list" is-link />
-    <van-cell title="设置诊所信息" url="/pages/child/clinic/edit/edit" is-link border="{{ false }}" />
+    <van-cell title="修改个人信息" url="/pages/child/user/edit/edit?id={{userInfo._id}}" is-link />
+    <van-cell wx:if="{{userInfo.isAdmin}}" title="科室管理" url="/pages/child/department/department" is-link />
+    <van-cell wx:if="{{userInfo.isAdmin}}" title="用户管理" url="/pages/child/user/list/list" is-link />
+    <van-cell wx:if="{{userInfo.isAdmin}}" title="设置诊所信息" url="/pages/child/clinic/edit/edit" is-link border="{{ false }}" />
   </van-cell-group>
 
   <van-button block class="btn-logout" bind:click="logout" type="danger">退出登录</van-button>

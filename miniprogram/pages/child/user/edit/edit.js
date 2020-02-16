@@ -7,7 +7,7 @@ Page({
   data: {
     userInfo: {}
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.loadUserInfo(options.id)
   },
   loadUserInfo(userId) {

@@ -29,10 +29,13 @@ Page({
         wx.hideLoading()
         if (res.result.code == 0) {
           console.log('登录成功', res)
+          let userInfo = res.result.data
+          userInfo.isAdmin = userInfo.role.includes('管理员')
+          userInfo.isDoctor = userInfo.role.includes('医生')
           this.setData({
-            userInfo: res.result.data
+            userInfo: userInfo
           })
-          app.login(res.result.data)
+          app.login(userInfo)
         } else {
           console.error('登录失败', res.result.errMsg)
         }

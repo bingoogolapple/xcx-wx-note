@@ -109,8 +109,15 @@
 				},
 				{
 					"id": 8,
-					"name": "查看用户信息",
+					"name": "查看个人信息",
 					"pathName": "pages/child/user/view/view",
+					"query": "id=1acf1de95e31ac28079723677f47fe64",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "修改个人信息",
+					"pathName": "pages/child/user/edit/edit",
 					"query": "id=1acf1de95e31ac28079723677f47fe64",
 					"scene": null
 				}

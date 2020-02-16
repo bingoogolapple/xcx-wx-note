@@ -25,7 +25,8 @@
     "pages/child/clinic/edit/edit",
     "pages/child/clinic/view/view",
     "pages/child/user/list/list",
-    "pages/child/user/view/view"
+    "pages/child/user/view/view",
+    "pages/child/user/edit/edit"
   ],
   "tabBar": {
     "list": [

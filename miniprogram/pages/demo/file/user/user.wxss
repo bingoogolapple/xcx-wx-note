@@ -1,10 +1,11 @@
-.avatar-box {
-  /* (750rpx - 200rpx) / 2，也可以用 flex */
-  padding: 100rpx 275rpx;
+.avatar-box{
+  padding: 50rpx 0;
   text-align: center;
 }
 
 .avatar {
+  /* (750rpx - 200rpx) / 2，也可以用 flex */
+  margin: 0rpx 275rpx;
   width: 200rpx;
   height: 200rpx;
   border-radius: 50%;
