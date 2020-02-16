@@ -24,7 +24,10 @@ Page({
       }
     ],
     filterRole: '全部用户',
+    filterKeyword: '',
+    newFilterKeyword: '',
     showUpdateRoleDialog: false,
+    toUpdateRoleUserId: null,
     toUpdateRoleList: []
   },
   onLoad: function(options) {
@@ -85,6 +88,13 @@ Page({
     this.setData({
       toUpdateRoleList: event.detail
     })
+  },
+  onKeywordChanged(event) {
+    this.data.newFilterKeyword = event.detail
+  },
+  onClickSearch() {
+    this.selectComponent('#searchItem').toggle()
+    this.data.filterKeyword = this.data.newFilterKeyword
   },
   performUpdateRole() {
     wx.cloud.callFunction({
