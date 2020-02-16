@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     userInfoList: null,
+    // 过滤相关
     roleList: [{
         text: '全部用户',
         value: '全部用户'
@@ -26,14 +27,26 @@ Page({
     filterRole: '全部用户',
     filterKeyword: '',
     newFilterKeyword: '',
+    // 点击条目相关
+    showClickItemActionSheet: false,
+    clickItemActionList: [{
+        name: '修改用户角色',
+        color: '#ee0a24'
+      },
+      {
+        name: '查看用户信息',
+        color: '#1989fa'
+      }
+    ],
+    // 修改角色相关
     showUpdateRoleDialog: false,
-    toUpdateRoleUserId: null,
-    toUpdateRoleList: []
+    selectedUserId: null,
+    selectedUserRole: []
   },
   onLoad: function(options) {
     this.loadUserInfoList()
   },
-  loadUserInfoList(loadMore = false, callback = () => { }) {
+  loadUserInfoList(loadMore = false, callback = () => {}) {
     app.showLoading('加载中...')
 
     wx.cloud.callFunction({
@@ -84,35 +97,18 @@ Page({
     })
   },
   // 需要在当前页面的 json 配置文件中设置 "enablePullDownRefresh": true，https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#%E9%A1%B5%E9%9D%A2%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.loadUserInfoList(false, () => {
       wx.stopPullDownRefresh()
     })
   },
   // onReachBottomDistance 设置页面上拉触底事件触发时距页面底部距离 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.loadUserInfoList(true)
   },
   onFilterRoleChanged(event) {
     this.data.filterRole = event.detail
     this.loadUserInfoList()
-  },
-  onClickItem(event) {
-    let user = event.target.dataset.user
-    if (!user) {
-      user = event.currentTarget.dataset.user
-    }
-    this.setData({
-      toUpdateRoleUserId: user._id,
-      toUpdateRoleList: user.role,
-      showUpdateRoleDialog: true
-    })
-  },
-  onRoleChanged(event) {
-    console.log(event)
-    this.setData({
-      toUpdateRoleList: event.detail
-    })
   },
   onKeywordChanged(event) {
     this.data.newFilterKeyword = event.detail
@@ -122,13 +118,49 @@ Page({
     this.data.filterKeyword = this.data.newFilterKeyword
     this.loadUserInfoList()
   },
+  onClickItem(event) {
+    let user = event.target.dataset.user
+    if (!user) {
+      user = event.currentTarget.dataset.user
+    }
+    this.setData({
+      selectedUserId: user._id,
+      selectedUserRole: user.role,
+      showClickItemActionSheet: true
+    })
+  },
+  hideClickItemActionSheet() {
+    this.setData({
+      showClickItemActionSheet: false
+    })
+  },
+  onClickItemAction(event) {
+    this.setData({
+      showClickItemActionSheet: false
+    })
+    let actionName = event.detail.name
+    if (actionName === '修改用户角色') {
+      this.setData({
+        showUpdateRoleDialog: true
+      })
+    } else if (actionName === '查看用户信息') {
+      wx.navigateTo({
+        url: `../view/view?id=${this.data.selectedUserId}`
+      })
+    }
+  },
+  onRoleChanged(event) {
+    this.setData({
+      selectedUserRole: event.detail
+    })
+  },
   performUpdateRole() {
     wx.cloud.callFunction({
       name: 'userInfos',
       data: {
         $url: "updateRole",
-        userId: this.data.toUpdateRoleUserId,
-        role: this.data.toUpdateRoleList
+        userId: this.data.selectedUserId,
+        role: this.data.selectedUserRole
       }
     }).then(res => {
       wx.hideLoading()

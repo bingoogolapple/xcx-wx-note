@@ -104,6 +104,14 @@
 					"id": -1,
 					"name": "用户管理",
 					"pathName": "pages/child/user/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "查看用户信息",
+					"pathName": "pages/child/user/view/view",
+					"query": "id=1acf1de95e31ac28079723677f47fe64",
 					"scene": null
 				}
 			]
