@@ -1,6 +1,6 @@
 const db = wx.cloud.database()
-const _ = db.command
 const userInfosCollection = db.collection('userInfos')
+const departmentCollection = db.collection('department')
 const app = getApp()
 
 Page({
@@ -14,8 +14,12 @@ Page({
     app.showLoading('加载中...')
     userInfosCollection.doc(userId).get().then(res => {
       console.error('加载用户信息成功', res.data)
+      let userInfo = res.data
+      if (userInfo.personalInfo && userInfo.personalInfo.departmentId) {
+        this.loadDepartment(userInfo.personalInfo.departmentId)
+      }
       this.setData({
-        userInfo: res.data
+        userInfo: userInfo
       }, () => {
         wx.hideLoading()
       })
@@ -23,5 +27,15 @@ Page({
       console.error('加载用户信息失败', err)
       wx.hideLoading()
     })
-  }
+  },
+  loadDepartment(departmentId) {
+    departmentCollection.doc(departmentId).get().then(res => {
+      console.log('加载科室成功')
+      this.setData({
+        departmentTitle: res.data.title
+      })
+    }).catch(err => {
+      console.error('加载科室失败', err)
+    })
+  },
 })

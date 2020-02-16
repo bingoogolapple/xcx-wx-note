@@ -14,4 +14,15 @@
       </block>
     </view>
   </view>
+
+  <van-cell-group wx:if="{{userInfo.personalInfo}}">
+    <van-cell title="真实姓名" value="{{userInfo.personalInfo.realName}}" />
+    <van-cell title="手机号" value="{{userInfo.personalInfo.phone}}" />
+    <van-cell title="科室" value="{{departmentTitle}}" />
+    <van-cell title="职称" value="{{userInfo.personalInfo.title}}" />
+    <van-cell title="擅长" border="{{false}}" value="{{userInfo.personalInfo.skilled}}" />
+    <van-panel title="简介">
+      <view style="padding: 30rpx;">{{userInfo.personalInfo.intro}}</view>
+    </van-panel>
+  </van-cell-group>
 </block>
