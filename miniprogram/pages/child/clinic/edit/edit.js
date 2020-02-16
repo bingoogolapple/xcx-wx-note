@@ -158,7 +158,7 @@ Page({
     }
   },
   uploadImage() {
-    app.showLoading('上传诊所中...')
+    app.showLoading('上传诊所图片中...')
     let image = this.data.clinic.image
     let suffix = /\.\w+$/.exec(image)[0]
     // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/storage/uploadFile/client.uploadFile.html

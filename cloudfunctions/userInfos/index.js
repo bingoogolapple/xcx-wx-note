@@ -11,6 +11,33 @@ const _ = db.command
 const userInfosCollection = db.collection('userInfos')
 
 /**
+ * 修改个人信息
+ */
+async function updatePersonalInfo(ctx) {
+  try {
+    const result = await userInfosCollection.doc(ctx.event.userId).update({
+      data: {
+        personalInfo: ctx.event.personalInfo
+      }
+    })
+    console.log('修改个人信息结果', result)
+
+    const isSuccess = result.errMsg.indexOf(':ok') !== -1
+    ctx.body = {
+      code: isSuccess ? 0 : 1,
+      data: isSuccess,
+      errMsg: isSuccess ? '修改个人信息成功' : '修改个人信息失败'
+    }
+  } catch (err) {
+    console.error('修改个人信息失败', err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+/**
  * 用户管理查询用户列表
  */
 async function userManageList(ctx) {
@@ -158,6 +185,7 @@ exports.main = async(event, context) => {
   app.router('login', login)
   app.router('updateRole', updateRole)
   app.router('userManageList', userManageList)
+  app.router('updatePersonalInfo', updatePersonalInfo)
 
   return app.serve()
 }

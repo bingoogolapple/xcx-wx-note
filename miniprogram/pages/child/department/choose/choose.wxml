@@ -1,0 +1,19 @@
+<block wx:if="{{departmentTree}}">
+  <van-collapse value="{{ activeId }}" bind:change="onActiveDepartmentChanged" accordion>
+    <block wx:for="{{departmentTree}}" wx:for-item="rootItem" wx:key="_id">
+      <van-collapse-item title="{{rootItem.title}}" wx:if="{{rootItem.children.length > 0}}" name="{{rootItem._id}}">
+        <van-cell clickable bind:click="onClickItem" data-item="{{item}}" wx:for="{{rootItem.children}}" title="{{item.title}}" wx:key="_id" />
+      </van-collapse-item>
+
+      <view wx:else>
+        <van-divider hairline customStyle="margin:0rpx;" />
+        <van-cell clickable border="{{false}}" bind:click="onClickItem" data-item="{{rootItem}}" title="{{rootItem.title}}" />
+      </view>
+    </block>
+  </van-collapse>
+</block>
+
+<view wx:else class="empty-container">
+  <image style="width: 40%;" mode="widthFix" src="/images/empty-box.png" />
+  <text style="color: #bfbfbf;">还没有科室</text>
+</view>

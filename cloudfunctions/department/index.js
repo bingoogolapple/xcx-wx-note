@@ -7,8 +7,37 @@ cloud.init({
 })
 
 const db = cloud.database()
+const _ = db.command
 const departmentCollection = db.collection('department')
 const ROOT_ID = 'root'
+
+async function departmentLeafList(ctx) {
+  try {
+    // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/aggregate/Aggregate.lookup.html
+    const result = await departmentCollection.aggregate()
+      .lookup({
+        from: 'department',
+        localField: '_id',
+        foreignField: 'parentId',
+        as: 'children'
+      })
+      .match({
+        children: _.size(0)
+      })
+      .end()
+    console.log(result)
+    ctx.body = {
+      code: 0,
+      data: result.list
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
 
 async function addOrUpdateDepartment(ctx) {
   try {
@@ -121,6 +150,7 @@ exports.main = async(event, context) => {
   app.router('addOrUpdateDepartment', addOrUpdateDepartment)
   app.router('deleteDepartment', deleteDepartment)
   app.router('departmentTree', departmentTree)
+  app.router('departmentLeafList', departmentLeafList)
 
   return app.serve()
 }

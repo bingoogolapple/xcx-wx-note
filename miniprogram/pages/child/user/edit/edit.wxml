@@ -1,17 +1,22 @@
-<block wx:if="{{userInfo}}">
+<block wx:if="{{personalInfo}}">
   <view class="user-container">
-    <image class="avatar" src="{{userInfo.avatarUrl}}" />
-    <text class="nickname">{{userInfo.nickName}}</text>
-    <view>
-      <block wx:if="{{userInfo.role.length > 0}}">
-        <block wx:for="{{userInfo.role}}" wx:key="*this" wx:for-item="roleItem">
-          <van-tag wx:if="{{roleItem==='管理员'}}" style="margin:5rpx;" plain round type="danger">{{roleItem}}</van-tag>
-          <van-tag wx:elif="{{roleItem==='医生'}}" style="margin:5rpx;" plain round type="success">{{roleItem}}</van-tag>
-        </block>
-      </block>
-      <block wx:else>
-        <van-tag style="margin:5rpx;" plain round type="primary">普通用户</van-tag>
-      </block>
-    </view>
+    <image catchtap="chooseImage" class="avatar" src="{{realAvatarUrl}}" />
+  </view>
+
+  <van-cell-group>
+    <van-field required bind:change="onRealNameChanged" clearable value="{{personalInfo.realName}}" label="真实姓名" placeholder="请输入真实姓名" input-align="right" />
+    <van-field required bind:change="onPhoneChanged" clearable value="{{personalInfo.phone}}" label="手机号" placeholder="请输入手机号" input-align="right" />
+    <van-cell required bind:click="chooseDepartment" title="科室" is-link value="{{department.title}}" />
+    <van-cell required bind:click="showChooseTitleActionSheet" title="职称" is-link value="{{personalInfo.title}}" />
+    <van-field required bind:change="onSkilledChanged" clearable value="{{personalInfo.skilled}}" label="擅长" placeholder="请输入擅长" input-align="right" />
+    <van-field required autosize required bind:change="onIntroChanged" value="{{personalInfo.intro}}" label="简介" type="textarea" placeholder="请输入简介" border="{{ false }}" />
+  </van-cell-group>
+
+  <view class="btn-container">
+    <van-button block type="primary" bind:click="submit">提交</van-button>
   </view>
 </block>
+
+<van-action-sheet bind:close="hideChooseTitleActionSheet" close-on-click-overlay show="{{ chooseTitleActionSheetVisible }}" title="选择职称">
+  <van-picker default-index="{{ defaultTitleIndex }}" value-key="title" columns="{{ titleList }}" bind:change="onTitleChanged" />
+</van-action-sheet>
