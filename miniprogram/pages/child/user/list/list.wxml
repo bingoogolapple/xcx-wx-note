@@ -1,6 +1,6 @@
 <van-dropdown-menu>
   <van-dropdown-item bind:change="onFilterRoleChanged" value="{{filterRole}}" options="{{ roleList }}" />
-  <van-dropdown-item id="searchItem" title="搜索关键字">
+  <van-dropdown-item id="searchItem" title="根据昵称搜索">
     <van-search input-align="center" value="{{filterKeyword}}" use-action-slot placeholder="请输入搜索关键词" bind:change="onKeywordChanged" show-action bind:search="onClickSearch">
       <view slot="action" bind:tap="onClickSearch">搜索</view>
     </van-search>

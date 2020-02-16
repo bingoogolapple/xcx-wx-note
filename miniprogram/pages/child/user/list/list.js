@@ -33,40 +33,65 @@ Page({
   onLoad: function(options) {
     this.loadUserInfoList()
   },
-  loadUserInfoList(callback = () => {}) {
+  loadUserInfoList(loadMore = false, callback = () => { }) {
     app.showLoading('加载中...')
 
-    let promise
-    if (this.data.filterRole === '全部用户') { // 全部用户时，不过滤
-      promise = userInfosCollection.where({})
-    } else if (this.data.filterRole === '普通用户') { // 普通用户时，role 列表的 length 为 0
-      promise = userInfosCollection.where({
-        role: _.size(0)
-      })
-    } else {
-      // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/command/Command.all.html
-      promise = userInfosCollection.where({
-        role: _.all([this.data.filterRole])
-      })
-    }
+    wx.cloud.callFunction({
+      name: "userInfos",
+      data: {
+        $url: "userManageList",
+        filterRole: this.data.filterRole,
+        filterKeyword: this.data.filterKeyword,
+        skip: loadMore ? this.data.userInfoList.length : 0,
+        limit: 15
+      }
+    }).then(res => {
+      if (res.result.code == 0) {
+        const newLserInfoList = res.result.data
+        console.log('加载用户列表成功', newLserInfoList)
 
-    promise.get().then(res => {
-      wx.hideLoading()
-      callback()
-      console.log('加载用户列表成功', res.data)
-      this.setData({
-        userInfoList: res.data
-      })
+        if (newLserInfoList.length == 0) {
+          wx.hideLoading()
+          callback()
+          if (loadMore) {
+            app.showToast('没有更多数据了')
+          } else {
+            app.showToast('没有数据')
+            this.setData({
+              userInfoList: []
+            }, () => {
+              wx.hideLoading()
+              callback()
+            })
+          }
+        } else {
+          this.setData({
+            userInfoList: loadMore ? this.data.userInfoList.concat(newLserInfoList) : newLserInfoList
+          }, () => {
+            wx.hideLoading()
+            callback()
+          })
+        }
+      } else {
+        console.error('加载用户列表失败', res.result.errMsg)
+        wx.hideLoading()
+        callback()
+      }
     }).catch(err => {
       console.error('加载用户列表失败', err)
       wx.hideLoading()
       callback()
     })
   },
-  onPullDownRefresh: function() {
-    this.loadUserInfoList(() => {
+  // 需要在当前页面的 json 配置文件中设置 "enablePullDownRefresh": true，https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#%E9%A1%B5%E9%9D%A2%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0
+  onPullDownRefresh: function () {
+    this.loadUserInfoList(false, () => {
       wx.stopPullDownRefresh()
     })
+  },
+  // onReachBottomDistance 设置页面上拉触底事件触发时距页面底部距离 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html
+  onReachBottom: function () {
+    this.loadUserInfoList(true)
   },
   onFilterRoleChanged(event) {
     this.data.filterRole = event.detail
@@ -95,6 +120,7 @@ Page({
   onClickSearch() {
     this.selectComponent('#searchItem').toggle()
     this.data.filterKeyword = this.data.newFilterKeyword
+    this.loadUserInfoList()
   },
   performUpdateRole() {
     wx.cloud.callFunction({

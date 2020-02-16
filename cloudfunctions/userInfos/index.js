@@ -7,14 +7,57 @@ cloud.init({
 })
 
 const db = cloud.database()
-const userInfos = db.collection('userInfos')
+const _ = db.command
+const userInfosCollection = db.collection('userInfos')
+
+/**
+ * 用户管理查询用户列表
+ */
+async function userManageList(ctx) {
+  try {
+    const event = ctx.event
+
+    let promise = userInfosCollection.aggregate()
+    if (event.filterRole === '全部用户') { // 全部用户时，不过滤角色
+    } else if (event.filterRole === '普通用户') { // 普通用户时，role 列表的 length 为 0
+      promise = promise.match({
+        role: _.size(0)
+      })
+    } else {
+      // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/command/Command.all.html
+      promise = promise.match({
+        role: _.all([event.filterRole])
+      })
+    }
+    if (event.filterKeyword) { // 关键字不为空时才过滤关键字
+      promise = promise.match({
+        nickName: db.RegExp({
+          regexp: event.filterKeyword
+        })
+      })
+    }
+
+    const result = await promise.skip(event.skip).limit(event.limit).end()
+    console.log('查询用户列表', result)
+    ctx.body = {
+      code: 0,
+      data: result.list
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
 
 /**
  * 修改角色
  */
 async function updateRole(ctx) {
   try {
-    const result = await userInfos.doc(ctx.event.userId).update({
+    const result = await userInfosCollection.doc(ctx.event.userId).update({
       data: {
         role: ctx.event.role
       }
@@ -46,7 +89,7 @@ async function login(ctx) {
     let openid = ctx.event.userInfo.openId
     user._openid = openid
 
-    let result = await userInfos.where({
+    let result = await userInfosCollection.where({
       _openid: openid
     }).field({
       _id: true
@@ -57,7 +100,7 @@ async function login(ctx) {
 
     if (result.data.length === 0) {
       user.role = []
-      result = await userInfos.add({
+      result = await userInfosCollection.add({
         data: user
       })
       // { _id: 'da51bd8c5e31a72b0794e37a2c7a1add', errMsg: 'collection.add:ok' }
@@ -65,7 +108,7 @@ async function login(ctx) {
       user._id = result._id
     } else {
       let id = result.data[0]._id
-      result = await userInfos.doc(id).update({
+      result = await userInfosCollection.doc(id).update({
         data: user
       })
       // 不管是 update 还是 set，都要放到调用后再设置 _id，否则会报错「不能更新_id的值;」
@@ -111,6 +154,7 @@ exports.main = async(event, context) => {
 
   app.router('login', login)
   app.router('updateRole', updateRole)
+  app.router('userManageList', userManageList)
 
   return app.serve()
 }

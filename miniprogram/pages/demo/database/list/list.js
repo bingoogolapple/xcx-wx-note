@@ -67,6 +67,17 @@ Page({
             title: '没有更多数据了',
             icon: 'none'
           })
+        } else {
+          wx.showToast({
+            title: '没有数据',
+            icon: 'none'
+          })
+          this.setData({
+            products: []
+          }, () => {
+            wx.hideLoading()
+            callback()
+          })
         }
       } else {
         this.setData({
@@ -108,6 +119,17 @@ Page({
               title: '没有更多数据了',
               icon: 'none'
             })
+          } else {
+            wx.showToast({
+              title: '没有数据',
+              icon: 'none'
+            })
+            this.setData({
+              products: []
+            }, () => {
+              wx.hideLoading()
+              callback()
+            })
           }
         } else {
           this.setData({
@@ -130,7 +152,7 @@ Page({
   },
   // 需要在当前页面的 json 配置文件中设置 "enablePullDownRefresh": true，https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#%E9%A1%B5%E9%9D%A2%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0
   onPullDownRefresh: function() {
-    this.localLoadProducts(false, () => {
+    this.localLoadProducts(() => {
       wx.stopPullDownRefresh()
     })
   },
