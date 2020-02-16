@@ -23,7 +23,9 @@ Page({
         value: '普通用户'
       }
     ],
-    filterRole: '全部用户'
+    filterRole: '全部用户',
+    showUpdateRoleDialog: false,
+    toUpdateRoleList: []
   },
   onLoad: function(options) {
     this.loadUserInfoList()
@@ -32,13 +34,14 @@ Page({
     app.showLoading('加载中...')
 
     let promise
-    if (this.data.filterRole === '全部用户') {
+    if (this.data.filterRole === '全部用户') { // 全部用户时，不过滤
       promise = userInfosCollection.where({})
-    } else if (this.data.filterRole === '普通用户') {
+    } else if (this.data.filterRole === '普通用户') { // 普通用户时，role 列表的 length 为 0
       promise = userInfosCollection.where({
         role: _.size(0)
       })
     } else {
+      // https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/database/command/Command.all.html
       promise = userInfosCollection.where({
         role: _.all([this.data.filterRole])
       })
@@ -71,6 +74,39 @@ Page({
     if (!user) {
       user = event.currentTarget.dataset.user
     }
-    console.log(user)
+    this.setData({
+      toUpdateRoleUserId: user._id,
+      toUpdateRoleList: user.role,
+      showUpdateRoleDialog: true
+    })
+  },
+  onRoleChanged(event) {
+    console.log(event)
+    this.setData({
+      toUpdateRoleList: event.detail
+    })
+  },
+  performUpdateRole() {
+    wx.cloud.callFunction({
+      name: 'userInfos',
+      data: {
+        $url: "updateRole",
+        userId: this.data.toUpdateRoleUserId,
+        role: this.data.toUpdateRoleList
+      }
+    }).then(res => {
+      wx.hideLoading()
+      if (res.result.code == 0) {
+        console.log('修改成功', res)
+        this.loadUserInfoList()
+      } else {
+        console.error('修改失败', res)
+        app.showToast('修改失败')
+      }
+    }).catch(err => {
+      wx.hideLoading()
+      console.error('修改失败', err)
+      app.showToast('修改失败')
+    })
   }
 })

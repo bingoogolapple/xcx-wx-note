@@ -14,3 +14,10 @@
     </block>
   </view>
 </van-card>
+
+<van-dialog use-slot title="修改用户角色" show="{{ showUpdateRoleDialog }}" show-cancel-button confirmButtonText="确认修改" bind:confirm="performUpdateRole">
+  <van-checkbox-group value="{{ toUpdateRoleList }}" bind:change="onRoleChanged">
+    <van-checkbox name="管理员">管理员</van-checkbox>
+    <van-checkbox name="医生">医生</van-checkbox>
+  </van-checkbox-group>
+</van-dialog>
