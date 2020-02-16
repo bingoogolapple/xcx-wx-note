@@ -140,6 +140,10 @@ Page({
     })
     let actionName = event.detail.name
     if (actionName === '修改用户角色') {
+      if (app.globalData.userInfo._id === this.data.selectedUserId) {
+        app.showToast('不允许修改自己的角色')
+        return
+      }
       this.setData({
         showUpdateRoleDialog: true
       })
