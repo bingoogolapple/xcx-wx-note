@@ -7,7 +7,7 @@ Page({
     departmentTree: null,
     activeId: null
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.loadDepartmentTree()
   },
   loadDepartmentTree(callback = () => { }) {
@@ -50,7 +50,7 @@ Page({
     console.log('onClickItem', event)
     let id = event.target.dataset.id
     wx.navigateTo({
-      url: `./edit/edit?id=${id}`,
+      url: `../edit/edit?id=${id}`,
       events: {
         refreshDepartmentList: data => {
           console.log('修改或删除成功，刷新科室列表', data)
@@ -61,7 +61,7 @@ Page({
   },
   addDepartment() {
     wx.navigateTo({
-      url: './edit/edit',
+      url: '../edit/edit',
       events: {
         refreshDepartmentList: data => {
           console.log('添加成功，刷新科室列表', data)

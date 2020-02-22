@@ -1,23 +1,29 @@
 <block wx:if="{{userInfo}}">
   <view class="user-container">
-    <image class="avatar" src="{{userInfo.avatarUrl}}" />
-    <text class="nickname">{{userInfo.nickName}}</text>
-    <view>
-      <block wx:if="{{userInfo.role.length > 0}}">
-        <block wx:for="{{userInfo.role}}" wx:key="*this" wx:for-item="roleItem">
-          <van-tag wx:if="{{roleItem==='管理员'}}" style="margin:5rpx;" plain round type="danger">{{roleItem}}</van-tag>
-          <van-tag wx:elif="{{roleItem==='医生'}}" style="margin:5rpx;" plain round type="success">{{roleItem}}</van-tag>
+    <image wx:if="{{userInfo.personalInfo.realAvatarUrl}}" class="avatar" src="{{userInfo.personalInfo.realAvatarUrl}}" />
+    <image wx:else class="avatar" src="{{userInfo.avatarUrl}}" />
+
+    <block wx:if="{{type === 'view_self'}}">
+      <text class="nickname">{{userInfo.nickName}}</text>
+      <view>
+        <block wx:if="{{userInfo.role.length > 0}}">
+          <block wx:for="{{userInfo.role}}" wx:key="*this" wx:for-item="roleItem">
+            <van-tag wx:if="{{roleItem==='管理员'}}" style="margin:5rpx;" plain round type="danger">{{roleItem}}</van-tag>
+            <van-tag wx:elif="{{roleItem==='医生'}}" style="margin:5rpx;" plain round type="success">{{roleItem}}</van-tag>
+          </block>
         </block>
-      </block>
-      <block wx:else>
-        <van-tag style="margin:5rpx;" plain round type="primary">普通用户</van-tag>
-      </block>
-    </view>
+        <block wx:else>
+          <van-tag style="margin:5rpx;" plain round type="primary">普通用户</van-tag>
+        </block>
+      </view>
+    </block>
   </view>
 
   <van-cell-group wx:if="{{userInfo.personalInfo}}">
     <van-cell title="真实姓名" value="{{userInfo.personalInfo.realName}}" />
-    <van-cell title="手机号" value="{{userInfo.personalInfo.phone}}" />
+    <block wx:if="{{type === 'view_self'}}">
+      <van-cell title="手机号" value="{{userInfo.personalInfo.phone}}" />
+    </block>
     <van-cell title="科室" value="{{departmentTitle}}" />
     <van-cell title="职称" value="{{userInfo.personalInfo.title}}" />
     <van-cell title="擅长" border="{{false}}" value="{{userInfo.personalInfo.skilled}}" />
@@ -25,4 +31,8 @@
       <view style="padding: 30rpx;">{{userInfo.personalInfo.intro}}</view>
     </van-panel>
   </van-cell-group>
+
+  <view wx:if="{{type === 'subscribe_doctor'}}" class="btn-container">
+    <van-button block type="primary" bind:click="subscribeDoctor">预约挂号</van-button>
+  </view>
 </block>

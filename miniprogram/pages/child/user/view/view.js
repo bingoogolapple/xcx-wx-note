@@ -5,9 +5,18 @@ const app = getApp()
 
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    type: null
   },
   onLoad: function(options) {
+    if (options.type === 'view_doctor' || options.type === 'subscribe_doctor') {
+      wx.setNavigationBarTitle({
+        title: '医生信息'
+      })
+    }
+    this.setData({
+      type: options.type
+    })
     this.loadUserInfo(options.id)
   },
   loadUserInfo(userId) {
@@ -38,4 +47,7 @@ Page({
       console.error('加载科室失败', err)
     })
   },
+  subscribeDoctor() {
+    app.showToast('敬请期待')
+  }
 })

@@ -40,6 +40,32 @@ async function updatePersonalInfo(ctx) {
 /**
  * 用户管理查询用户列表
  */
+async function departmentDoctorList(ctx) {
+  try {
+    const event = ctx.event
+    const result = await userInfosCollection.where({
+      personalInfo: {
+        departmentId: event.departmentId
+      },
+      role: _.all(['医生'])
+    }).skip(event.skip).limit(event.limit).get()
+    console.log('查询科室医生列表', result)
+    ctx.body = {
+      code: 0,
+      data: result.data
+    }
+  } catch (err) {
+    console.error(err)
+    ctx.body = {
+      code: 1,
+      errMsg: err.errMsg
+    }
+  }
+}
+
+/**
+ * 用户管理查询用户列表
+ */
 async function userManageList(ctx) {
   try {
     const event = ctx.event
@@ -186,6 +212,7 @@ exports.main = async(event, context) => {
   app.router('updateRole', updateRole)
   app.router('userManageList', userManageList)
   app.router('updatePersonalInfo', updatePersonalInfo)
+  app.router('departmentDoctorList', departmentDoctorList)
 
   return app.serve()
 }

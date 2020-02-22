@@ -1,0 +1,6 @@
+<van-card wx:for="{{userInfoList}}" wx:key="_id" centered tag="{{item.personalInfo.title}}" desc="　" title="{{item.personalInfo.realName}}" thumb="{{item.personalInfo.realAvatarUrl}}" catchtap="onClickItem" data-user="{{item}}">
+  <view slot="tags">
+    <view>科室：{{departmentTitle}}</view>
+    <view>擅长：{{item.personalInfo.skilled}}</view>
+  </view>
+</van-card>

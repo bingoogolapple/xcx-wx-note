@@ -5,7 +5,7 @@ const app = getApp()
 
 Page({
   data: {
-    userInfoList: null,
+    userInfoList: [],
     // 过滤相关
     roleList: [{
         text: '全部用户',
@@ -149,7 +149,7 @@ Page({
       })
     } else if (actionName === '查看用户信息') {
       wx.navigateTo({
-        url: `../view/view?id=${this.data.selectedUserId}`
+        url: `../view/view?id=${this.data.selectedUserId}&type=view_self`
       })
     }
   },

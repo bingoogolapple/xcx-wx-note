@@ -120,6 +120,20 @@
 					"pathName": "pages/child/user/edit/edit",
 					"query": "id=1acf1de95e31ac28079723677f47fe64",
 					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "眼科医生",
+					"pathName": "pages/child/user/department-doctor/department-doctor",
+					"query": "departmentId=74b140b45e36b92c095a0fd05f361cd8&departmentTitle=眼科&type=view_doctor",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "预约医生信息",
+					"pathName": "pages/child/user/view/view",
+					"query": "id=1acf1de95e31ac28079723677f47fe64&type=subscribe_doctor",
+					"scene": null
 				}
 			]
 		}

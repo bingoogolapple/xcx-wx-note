@@ -14,3 +14,8 @@
 .nickname {
   margin: 10rpx 0;
 }
+
+.btn-container {
+  margin-top: 20rpx;
+  padding: 30rpx;
+}

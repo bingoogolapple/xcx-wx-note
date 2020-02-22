@@ -20,14 +20,15 @@
     "pages/demo/file/user/user",
     "pages/demo/file/photo/photo",
     "pages/demo/file/add/add",
-    "pages/child/department/department",
+    "pages/child/department/list/list",
     "pages/child/department/edit/edit",
+    "pages/child/department/choose/choose",
     "pages/child/clinic/edit/edit",
     "pages/child/clinic/view/view",
     "pages/child/user/list/list",
     "pages/child/user/view/view",
     "pages/child/user/edit/edit",
-    "pages/child/department/choose/choose"
+    "pages/child/user/department-doctor/department-doctor"
   ],
   "tabBar": {
     "list": [

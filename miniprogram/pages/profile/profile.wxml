@@ -1,6 +1,6 @@
 <block wx:if="{{userInfo}}">
   <view class="user-container">
-    <navigator style="background: none;" url="/pages/child/user/view/view?id={{userInfo._id}}">
+    <navigator style="background: none;" url="/pages/child/user/view/view?id={{userInfo._id}}&type=view_self">
       <image class="avatar" src="{{userInfo.avatarUrl}}" />
     </navigator>
     <text class="nickname">{{userInfo.nickName}}</text>
@@ -19,7 +19,7 @@
 
   <van-cell-group>
     <van-cell title="修改个人信息" url="/pages/child/user/edit/edit?id={{userInfo._id}}" is-link />
-    <van-cell wx:if="{{userInfo.isAdmin}}" title="科室管理" url="/pages/child/department/department" is-link />
+    <van-cell wx:if="{{userInfo.isAdmin}}" title="科室管理" url="/pages/child/department/list/list" is-link />
     <van-cell wx:if="{{userInfo.isAdmin}}" title="用户管理" url="/pages/child/user/list/list" is-link />
     <van-cell wx:if="{{userInfo.isAdmin}}" title="设置诊所信息" url="/pages/child/clinic/edit/edit" is-link border="{{ false }}" />
   </van-cell-group>
